@@ -1,5 +1,5 @@
 import React from "react";
-import { Question } from "../services/questionService";
+import { Question } from "../../services/questionService";
 
 // tsx (typescript) functional component
 export interface QuestionsTableProps {

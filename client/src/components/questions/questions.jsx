@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import QuestionService from "../services/questionService";
+import QuestionService from "../../services/questionService";
 import QuestionsForm from "./questionsForm";
 import QuestionsTable from "./questionsTable";
 
