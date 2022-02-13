@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, NavLink } from 'react-router-dom';
-import MainMenu from '../MainMenu/mainMenu';
+import MainMenu from '../MainMenu/MainMenu';
 import './login.scss';
 
 const Login = () => {
