@@ -14,7 +14,6 @@ const QuestionsTable: React.FC<QuestionsTableProps> = (
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Title</th>
           </tr>
         </thead>
@@ -23,6 +22,12 @@ const QuestionsTable: React.FC<QuestionsTableProps> = (
             <tr key={question.Id}>
               <th scope="row">{question.Id}</th>
               <td>{question.Title}</td>
+            </tr>
+          ))}
+          {props.questions.map((question) => (
+            <tr key={question.Id}>
+              <th scope="row">{question.Id}</th>
+              <td>{question.Content}</td>
             </tr>
           ))}
         </tbody>

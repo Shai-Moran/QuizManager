@@ -3,6 +3,7 @@ import http from "./httpService";
 export interface Question {
   Id: number;
   Title: string;
+  Content: string;
 }
 
 const serverRoute = "/api/Questions/";
