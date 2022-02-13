@@ -17,8 +17,13 @@ class Questions extends Component {
     this.setState({ questions });
   }
 
-  addQuestion = async (question) => {
+  async addQuestion (question) {
     const addedQuestion = await QuestionService.addQuestion(question);
+    this.setState({ questions: [...this.state.questions, addedQuestion.data] });
+  };
+
+  async deleteQuestion (question) {
+    const addedQuestion = await QuestionService.deleteQuestion(question);
     this.setState({ questions: [...this.state.questions, addedQuestion.data] });
   };
 
