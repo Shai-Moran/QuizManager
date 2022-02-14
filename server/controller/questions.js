@@ -11,4 +11,4 @@ class QuestionsController {
   }
 }
 
-module.exports = new QuestionsController();
+module.exports = new QuestionsController()
