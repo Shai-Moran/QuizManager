@@ -1,10 +1,10 @@
 import "./App.css";
-import Questions from "./components/questions/questions";
+import CreateQuestion from "./components/createQuestion";
 
 function App() {
   return (
     <div className="App">
-      <Questions></Questions>
+      <CreateQuestion></CreateQuestion>
     </div>
   );
 }
