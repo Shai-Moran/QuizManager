@@ -1,10 +1,16 @@
-import "./App.css";
-import Questions from "./components/questions/questions";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NewTest from './components/NewTest/NewTest';
+
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Questions></Questions>
+      <BrowserRouter>
+        <Routes>
+          <Route path="new-test" element={<NewTest />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
