@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NewTest from './components/NewTest/NewTest';
-
-import './App.css';
 import NewQuestion from './components/NewQuestion/NewQuestion';
+import './App.css';
+
 
 function App() {
   return (
