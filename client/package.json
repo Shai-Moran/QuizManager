@@ -14,11 +14,8 @@
     "html-to-draftjs": "^1.5.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.2",
-<<<<<<< HEAD
     "react-native": "^0.67.2",
-=======
     "react-draft-wysiwyg": "^1.14.7",
->>>>>>> 703c7eab19c1aa6d5d144bde41a76a70c606b0d4
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.1",
     "semantic-ui-css": "^2.4.1",
