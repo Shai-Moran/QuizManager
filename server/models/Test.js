@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TestSchema = {
-  Name: {
+  name: {
+    type: String,
+    required: true
+  },
+  lastUpdated: {
     type: String,
     required: true
   },

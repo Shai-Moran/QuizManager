@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NewTest from './components/NewTest/NewTest';
 
+import 'semantic-ui-css/semantic.min.css'
 import './App.css';
 
 function App() {
