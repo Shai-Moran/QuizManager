@@ -23,8 +23,12 @@ const TestSchema = {
     type: Array,
     required: true
   },
-  email: {
+  createrEmail: {
     type: String,
+    required: true
+  },
+  emailId: {
+    type: Object,
     required: true
   },
   answerReview: {

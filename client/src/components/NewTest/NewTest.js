@@ -8,6 +8,7 @@ const NewTest = () => {
   const [language, setLenguage] = useState('');
   const [passingGrade, setPassingGrade] = useState(0);
   const [Name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [header, setHeader] = useState(() => EditorState.createEmpty());
   const [successMsg, setSuccessMsg] = useState(() => EditorState.createEmpty());
   const [failMsg, setFailMsg] = useState(() => EditorState.createEmpty());
@@ -28,6 +29,7 @@ const NewTest = () => {
         setLenguage={setLenguage}
         setPassingGrade={setPassingGrade}
         setName={setName}
+        setEmail={setEmail}
         header={header}
         setHeader={setHeader}
         successMsg={successMsg}
