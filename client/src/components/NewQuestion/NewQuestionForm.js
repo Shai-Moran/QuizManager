@@ -28,18 +28,35 @@ const NewQuestionForm = (props) => {
       </Header>
       <Header textAlign="left">
         Content:
-        <Form.Input
-      
+        <Form.Input      
           placeholder="Content"
           onChange={(e) => props.setContent(e.target.value)}
         />
       </Header>
       <Header textAlign="left">
         Passing Grade:
-        <Form.Input
-          fluid
+        <Form.Input         
           type="Number"
           onChange={(e) => props.setPassingGrade(e.target.value)}
+        />
+      </Header>
+      <Header textAlign="left">
+        Answers:
+        <Form.Input                 
+          placeholder="Answer"
+          onChange={(e) => props.setAnswers(e.target.value)}
+        />
+        <Form.Input                 
+          placeholder="Answer"
+          onChange={(e) => props.setAnswers(e.target.value)}
+        />
+        <Form.Input         
+          placeholder="Answer"
+          onChange={(e) => props.setAnswers(e.target.value)}
+        />
+        <Form.Input         
+          placeholder="Answer"
+          onChange={(e) => props.setAnswers(e.target.value)}
         />
       </Header>
     </Form>
