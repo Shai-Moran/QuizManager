@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TestSchema = {
+  id: {
+    type: String,
+    required: true
+  },
   name: {
     type: String,
     required: true
@@ -12,11 +16,10 @@ const TestSchema = {
   },
   language: {
     type: String,
-    enum: ['English, Hebrew'],
     required: true
   },
   opening: {
-    type: String,
+    type: Object,
     required: true
   },
   questions: {
@@ -28,7 +31,7 @@ const TestSchema = {
     required: true
   },
   emailId: {
-    type: Object,
+    type: String,
     required: true
   },
   answerReview: {
@@ -40,11 +43,11 @@ const TestSchema = {
     required: true
   },
   passingText: {
-    type: String,
+    type: Object,
     required: true
   },
   failText: {
-    type: String,
+    type: Object,
     required: true
   }
 };

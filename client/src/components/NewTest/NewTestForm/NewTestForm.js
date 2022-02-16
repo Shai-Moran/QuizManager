@@ -48,7 +48,7 @@ const NewTestForm = (props) => {
         </Header>
         <TextEditor
           editorState={props.header}
-          setEditorState={props.setheader}
+          setEditorState={props.setHeader}
         />
       </div>
       <div className="wysiwyg-input">

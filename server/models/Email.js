@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const EmailSchema = {
+  id: {
+    type: String,
+    required: true
+  },
   subject: {
     type: String,
     required: true
@@ -10,7 +14,11 @@ const EmailSchema = {
     type: Object,
     required: true
   },
-  body: {
+  successBody: {
+    type: Object,
+    required: true
+  },
+  failBody: {
     type: Object,
     required: true
   }
