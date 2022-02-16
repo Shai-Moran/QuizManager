@@ -1,6 +1,6 @@
 import React ,{ useState } from "react";
 import Checkbox from "antd/lib/checkbox/Checkbox";
-import "./NewQuestionForm.scss"
+import "./NewQuestionForm.css"
 
 const NewQuestionForm = () => {
 

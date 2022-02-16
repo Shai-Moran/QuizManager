@@ -11,9 +11,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="new-test" element={<NewTest />} />
+          <Route path="new-question" element={<NewQuestion/>}/>
         </Routes>
       </BrowserRouter>
-      <NewQuestion></NewQuestion>
     </div>
   );
 }
