@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Header, Form } from 'semantic-ui-react';
 import TextEditor from '../../UI/TextEditor/TextEditor';
-import { EditorState } from 'draft-js';
 
-const NewTestForm = () => {
-  const [language, setLenguage] = useState('');
-  const [Name, setName] = useState('');
-  const [header, setheader] = useState(() => EditorState.createEmpty());
-  const [successMsg, setSuccessMsg] = useState(() => EditorState.createEmpty());
-  const [failMsg, setFailMsg] = useState(() => EditorState.createEmpty());
-
+const NewTestForm = (props) => {
   const languageOptions = [
     { key: 'hebrew', value: 'hebrew', text: 'Hebrew' },
     { key: 'english', value: 'english', text: 'English' }
@@ -23,7 +16,7 @@ const NewTestForm = () => {
           selection
           placeholder="Select a Language"
           options={languageOptions}
-          onChange={(e) => setLenguage(e.target.innerText)}
+          onChange={(e) => props.setLenguage(e.target.innerText)}
         />
       </Header>
       <Header textAlign="left">
@@ -31,7 +24,7 @@ const NewTestForm = () => {
         <Form.Input
           fluid
           placeholder="Test Name"
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => props.setName(e.target.value)}
         />
       </Header>
       <Header textAlign="left">
@@ -39,26 +32,26 @@ const NewTestForm = () => {
         <Form.Input
           fluid
           type="Number"
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => props.setPassingGrade(e.target.value)}
         />
       </Header>
       <div className="wysiwyg-input">
         <Header textAlign="left" as="h2">
           Header
         </Header>
-        <TextEditor editorState={header} setEditorState={setheader} />
+        <TextEditor editorState={props.header} setEditorState={props.setheader} />
       </div>
       <div className="wysiwyg-input">
         <Header textAlign="left" as="h2">
           Message to show on success:
         </Header>
-        <TextEditor editorState={successMsg} setEditorState={setSuccessMsg} />
+        <TextEditor editorState={props.successMsg} setEditorState={props.setSuccessMsg} />
       </div>
       <div className="wysiwyg-input">
         <Header textAlign="left" as="h2">
           Message to show on failure:
         </Header>
-        <TextEditor editorState={failMsg} setEditorState={setFailMsg} />
+        <TextEditor editorState={props.failMsg} setEditorState={props.setFailMsg} />
       </div>
     </Form>
   );
