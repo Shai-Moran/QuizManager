@@ -1,11 +1,25 @@
 import React ,{ useState } from "react";
-import Checkbox from "antd/lib/checkbox/Checkbox";
 import "./NewQuestionForm.css"
+import { Header, Form } from "semantic-ui-react";
 
-const NewQuestionForm = () => {
-
+const NewQuestionForm = (props) => {
+  const questionType = [
+    { key: 'SingleChoiceQuestion', value: 'SingleChoiceQuestion', text: 'SingleChoiceQuestion' },
+    { key: 'MultipleSelectionQuestion', value: 'MultipleSelectionQuestion', text: 'MultipleSelectionQuestion' }
+  ];
   return (
-    <div>
+    <Form>
+      <Header textAlign="left">
+        Language:
+        <Form.Select
+          selection
+          placeholder="Select a question Type"
+          options={questionType}
+          onChange={(e) => props.setQuestionType(e.target.innerText)}
+        />
+      </Header>
+    </Form>
+/*     <div>
         <div>
             <label htmlFor="type">Type: </label>
               <select>
@@ -45,7 +59,7 @@ const NewQuestionForm = () => {
              <input type="text"/> 
            </div> 
            <button>Add question</button>    
-      </div>
+      </div> */
     );
   };
 
