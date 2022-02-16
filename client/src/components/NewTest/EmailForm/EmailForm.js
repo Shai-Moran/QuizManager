@@ -25,15 +25,15 @@ const EmailForm = (props) => {
       <Header as="h1">Email Form</Header>
       <div>
         <Header textAlign="left" as="h2">
-          Passing Email:
-        </Header>
-        <Header textAlign="left" as="h3">
           Subject:
           <Form.Input
             fluid
             placeholder="Enter Subject"
-            onChange={(e) => props.setPassSubject(e.target.innerText)}
+            onChange={(e) => props.setSubject(e.target.value)}
           />
+        </Header>
+        <Header textAlign="left" as="h3">
+          Passing Email:
         </Header>
         <TextEditor
           editorState={props.passingEditor}
@@ -47,14 +47,6 @@ const EmailForm = (props) => {
       <div>
         <Header textAlign="left" as="h2">
           Failing Email:
-        </Header>
-        <Header textAlign="left" as="h3">
-          Subject:
-          <Form.Input
-            fluid
-            placeholder="Enter Subject"
-            onChange={(e) => props.setFailSubject(e.target.innerText)}
-          />
         </Header>
         <TextEditor
           editorState={props.failingEditor}
