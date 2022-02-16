@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Container, Header, Form } from 'semantic-ui-react';
+import { Header, Form } from 'semantic-ui-react';
 import TextEditor from '../../UI/TextEditor/TextEditor';
 
 const NewTestForm = (props) => {
@@ -28,6 +27,14 @@ const NewTestForm = (props) => {
         />
       </Header>
       <Header textAlign="left">
+        Creater Email:
+        <Form.Input
+          fluid
+          placeholder="Email"
+          onChange={(e) => props.setEmail(e.target.value)}
+        />
+      </Header>
+      <Header textAlign="left">
         Passing Grade:
         <Form.Input
           fluid
@@ -39,19 +46,28 @@ const NewTestForm = (props) => {
         <Header textAlign="left" as="h2">
           Header
         </Header>
-        <TextEditor editorState={props.header} setEditorState={props.setheader} />
+        <TextEditor
+          editorState={props.header}
+          setEditorState={props.setheader}
+        />
       </div>
       <div className="wysiwyg-input">
         <Header textAlign="left" as="h2">
           Message to show on success:
         </Header>
-        <TextEditor editorState={props.successMsg} setEditorState={props.setSuccessMsg} />
+        <TextEditor
+          editorState={props.successMsg}
+          setEditorState={props.setSuccessMsg}
+        />
       </div>
       <div className="wysiwyg-input">
         <Header textAlign="left" as="h2">
           Message to show on failure:
         </Header>
-        <TextEditor editorState={props.failMsg} setEditorState={props.setFailMsg} />
+        <TextEditor
+          editorState={props.failMsg}
+          setEditorState={props.setFailMsg}
+        />
       </div>
     </Form>
   );
