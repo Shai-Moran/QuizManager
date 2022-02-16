@@ -6,10 +6,10 @@ import { EditorState } from 'draft-js';
 const NewQuestion = () => {
   const [questionType, setQuestionType] = useState('')
   const [language, setLenguage] = useState('');
-  const [passingGrade, setPassingGrade] = useState(0);
+  const [points, setPoints] = useState(0);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [answers, setAnswers] = useState('');
+  const [answers, setAnswers] = useState([]);
 
   return (
     <Container>
@@ -17,10 +17,11 @@ const NewQuestion = () => {
       <NewQuestionForm
         setQuestionType={setQuestionType}
         setLenguage={setLenguage}
-        setPassingGrade={setPassingGrade}
+        setPoints={setPoints}
         setTitle={setTitle}
         setContent={setContent}
         setAnswers={setAnswers}
+        answers={answers}
       />
     </Container>
   );

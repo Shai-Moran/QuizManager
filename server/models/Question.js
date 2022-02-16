@@ -20,11 +20,15 @@ const QuestionSchema = {
   },
   questionType: {
     type: String,
-    enum: ['OneAnswer, MultiAnswer'],
+    enum: ['SingleChoiceQuestion, MultipleSelectionQuestion'],
     required: true
   },
   tags: {
     type: Array,
+    required: true
+  },
+  points: {
+    type: Number,
     required: true
   }
 };
