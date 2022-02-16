@@ -60,36 +60,6 @@ const NewQuestionForm = (props) => {
         />
       </Header>
     </Form>
-/*     <div>
-          <div>
-            <label htmlFor="content">Content: </label>
-            <input type="text"/>
-          </div>
-          <div>
-            <label htmlFor="answers">Answers: </label>
-            <div>
-            <Checkbox></Checkbox>
-              A<input type="text"/>
-            </div>
-            <div>
-            <Checkbox></Checkbox>
-              B<input type="text"/> 
-            </div>
-            <div>
-            <Checkbox></Checkbox>
-              C<input type="text"/> 
-            </div>
-            <div>
-            <Checkbox></Checkbox>
-              D<input type="text"/>                  
-            </div>                
-          </div>
-           <div>
-             <label htmlFor="tags">Tags: </label>
-             <input type="text"/> 
-           </div> 
-           <button>Add question</button>    
-      </div> */
     );
   };
 
