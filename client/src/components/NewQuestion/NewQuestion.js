@@ -4,6 +4,7 @@ import { Container } from 'semantic-ui-react';
 import { EditorState } from 'draft-js';
 
 const NewQuestion = () => {
+  const [questionType, setQuestionType] = useState('')
   const [language, setLenguage] = useState('');
   const [passingGrade, setPassingGrade] = useState(0);
   const [title, setTitle] = useState('');
@@ -14,6 +15,7 @@ const NewQuestion = () => {
     <Container>
       <h1>New Question</h1>
       <NewQuestionForm
+        setQuestionType={setQuestionType}
         setLenguage={setLenguage}
         setPassingGrade={setPassingGrade}
         setTitle={setTitle}

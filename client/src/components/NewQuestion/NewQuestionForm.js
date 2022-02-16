@@ -10,7 +10,7 @@ const NewQuestionForm = (props) => {
   return (
     <Form>
       <Header textAlign="left">
-        Language:
+        Question Type:
         <Form.Select
           selection
           placeholder="Select a question Type"
@@ -18,19 +18,32 @@ const NewQuestionForm = (props) => {
           onChange={(e) => props.setQuestionType(e.target.innerText)}
         />
       </Header>
+      <Header textAlign="left">
+        Title:
+        <Form.Input
+          fluid
+          placeholder="Title"
+          onChange={(e) => props.setTitle(e.target.value)}
+        />
+      </Header>
+      <Header textAlign="left">
+        Content:
+        <Form.Input
+      
+          placeholder="Content"
+          onChange={(e) => props.setContent(e.target.value)}
+        />
+      </Header>
+      <Header textAlign="left">
+        Passing Grade:
+        <Form.Input
+          fluid
+          type="Number"
+          onChange={(e) => props.setPassingGrade(e.target.value)}
+        />
+      </Header>
     </Form>
 /*     <div>
-        <div>
-            <label htmlFor="type">Type: </label>
-              <select>
-                <option>SingleChoiceQuestion</option>
-                <option>MultipleSelectionQuestion</option>
-              </select>
-            </div>
-          <div>
-            <label htmlFor="title">Title: </label>
-            <input type="text"/>
-          </div>
           <div>
             <label htmlFor="content">Content: </label>
             <input type="text"/>
