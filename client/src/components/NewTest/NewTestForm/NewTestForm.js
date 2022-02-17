@@ -1,14 +1,36 @@
+import { useState, useEffect } from 'react';
 import { Header, Form } from 'semantic-ui-react';
 import TextEditor from '../../UI/TextEditor/TextEditor';
+import getFieldsService from '../../../services/getFieldsService';
 
 const NewTestForm = (props) => {
+  const [fields, setFields] = useState([]);
   const languageOptions = [
     { key: 'hebrew', value: 'hebrew', text: 'Hebrew' },
     { key: 'english', value: 'english', text: 'English' }
   ];
 
+  useEffect(async () => {
+    var fieldsData = await getFieldsService.getFields();
+    fieldsData.data.map((f) => {
+      setFields((prevState) => [
+        ...prevState,
+        { key: f.fieldName, value: f.fieldName, text: f.fieldName }
+      ]);
+    });
+  }, []);
+
   return (
     <Form>
+      <Header textAlign="left">
+        Field:
+        <Form.Select
+          selection
+          placeholder="Select a Field"
+          options={fields}
+          onChange={(e) => props.setField(e.target.innerText)}
+        />
+      </Header>
       <Header textAlign="left">
         Language:
         <Form.Select

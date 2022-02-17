@@ -7,6 +7,7 @@ import newTestService from '../../services/newTestService';
 import { v4 as uuidv4 } from 'uuid';
 
 const NewTest = () => {
+  const [field, setField] = useState('');
   const [language, setLenguage] = useState('');
   const [passingGrade, setPassingGrade] = useState(0);
   const [name, setName] = useState('');
@@ -24,10 +25,11 @@ const NewTest = () => {
   );
 
   const newTestHandler = () => {
-    console.log(subject);
     const date = new Date();
+
     const newTest = {
       testId: uuidv4(),
+      field: field,
       name: name,
       lastUpdated: `${date.getDate()}/${
         date.getMonth() + 1
@@ -42,7 +44,7 @@ const NewTest = () => {
       passingText: successMsg,
       failText: failMsg,
       emailId: uuidv4(),
-      subject: 'abc',
+      subject: subject,
       successBody: passingEditor,
       failBody: failingEditor
     };
@@ -51,9 +53,10 @@ const NewTest = () => {
   };
 
   return (
-    <Container>
+    <Container className="new-test-container">
       <h1>New Test</h1>
       <NewTestForm
+        setField={setField}
         setLenguage={setLenguage}
         setPassingGrade={setPassingGrade}
         setName={setName}
@@ -72,9 +75,11 @@ const NewTest = () => {
         failingEditor={failingEditor}
         setFailingEditor={setFailingEditor}
       />
-      <Button className="ui green button" onClick={newTestHandler}>
-        Create New Test
-      </Button>
+      <Container textAlign="right">
+        <Button className="ui green button" onClick={newTestHandler}>
+          Create New Test
+        </Button>
+      </Container>
     </Container>
   );
 };
