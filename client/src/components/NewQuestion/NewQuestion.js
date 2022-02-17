@@ -12,10 +12,10 @@ const NewQuestion = () => {
   const [points, setPoints] = useState(0);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [answer1, setAnswer1] = useState('');
-  const [answer2, setAnswer2] = useState('');
-  const [answer3, setAnswer3] = useState('');
-  const [answer4, setAnswer4] = useState('');
+  const [answer1, setAnswer1] = useState({content: '', isTrue: false});
+  const [answer2, setAnswer2] = useState({content: '', isTrue: false});
+  const [answer3, setAnswer3] = useState({content: '', isTrue: false});
+  const [answer4, setAnswer4] = useState({content: '', isTrue: false});
 
   const [questionTypeError, setQuestionTypeError] = useState(false);
   const [languageError, setLanguageError] = useState(false);
@@ -74,6 +74,10 @@ const NewQuestion = () => {
         setAnswer2={setAnswer2}
         setAnswer3={setAnswer3}
         setAnswer4={setAnswer4}
+        answer1={answer1}
+        answer2={answer2}
+        answer3={answer3}
+        answer4={answer4}
         questionTypeError={questionTypeError}
         languageError={languageError}
         pointsError={pointsError}
