@@ -6,6 +6,10 @@ const TestSchema = {
     type: String,
     required: true
   },
+  field: {
+    type: String,
+    required: true
+  },
   name: {
     type: String,
     required: true

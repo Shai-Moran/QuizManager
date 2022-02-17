@@ -27,6 +27,7 @@ const EmailForm = (props) => {
         <Header textAlign="left" as="h2">
           Subject:
           <Form.Input
+            error={props.subjectError}
             fluid
             placeholder="Enter Subject"
             onChange={(e) => props.setSubject(e.target.value)}

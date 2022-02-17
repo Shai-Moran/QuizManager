@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import NewTestForm from './NewTestForm/NewTestForm';
 import { Button, Container } from 'semantic-ui-react';
 import EmailForm from './EmailForm/EmailForm';
@@ -7,6 +8,8 @@ import newTestService from '../../services/newTestService';
 import { v4 as uuidv4 } from 'uuid';
 
 const NewTest = () => {
+  const navigation = useNavigate();
+  const [field, setField] = useState('');
   const [language, setLenguage] = useState('');
   const [passingGrade, setPassingGrade] = useState(0);
   const [name, setName] = useState('');
@@ -23,37 +26,61 @@ const NewTest = () => {
     EditorState.createEmpty()
   );
 
-  const newTestHandler = () => {
-    console.log(subject);
-    const date = new Date();
-    const newTest = {
-      testId: uuidv4(),
-      name: name,
-      lastUpdated: `${date.getDate()}/${
-        date.getMonth() + 1
-      }/${date.getFullYear()}`,
-      language: language,
-      opening: header,
-      questions: [],
-      createrEmail: email,
-      passingGrade: passingGrade,
-      answerReview: false,
-      certificateUtl: 'abc',
-      passingText: successMsg,
-      failText: failMsg,
-      emailId: uuidv4(),
-      subject: 'abc',
-      successBody: passingEditor,
-      failBody: failingEditor
-    };
+  const [fieldError, setFieldError] = useState(false);
+  const [languageError, setLanguageError] = useState(false);
+  const [passingGradeError, setPassingGradeError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [subjectError, setSubjectError] = useState(false);
 
-    newTestService.addTest(newTest);
+  const newTestHandler = () => {
+    const date = new Date();
+
+    if (field === '') {
+      setFieldError(true);
+    } else if (language === '') {
+      setLanguageError(true);
+    } else if (passingGrade > 100 || passingGrade < 0) {
+      setPassingGradeError(true);
+    } else if (name === '') {
+      setNameError(true);
+    } else if (email === '') {
+      setEmailError(true);
+    } else if (subject === '') {
+      setSubjectError(true);
+    } else {
+      const newTest = {
+        testId: uuidv4(),
+        field: field,
+        name: name,
+        lastUpdated: `${date.getDate()}/${
+          date.getMonth() + 1
+        }/${date.getFullYear()}`,
+        language: language,
+        opening: header,
+        questions: [],
+        createrEmail: email,
+        passingGrade: passingGrade,
+        answerReview: false,
+        certificateUtl: 'abc',
+        passingText: successMsg,
+        failText: failMsg,
+        emailId: uuidv4(),
+        subject: subject,
+        successBody: passingEditor,
+        failBody: failingEditor
+      };
+
+      newTestService.addTest(newTest);
+      navigation('/test-added');
+    }
   };
 
   return (
-    <Container>
+    <Container className="new-test-container">
       <h1>New Test</h1>
       <NewTestForm
+        setField={setField}
         setLenguage={setLenguage}
         setPassingGrade={setPassingGrade}
         setName={setName}
@@ -64,6 +91,11 @@ const NewTest = () => {
         setSuccessMsg={setSuccessMsg}
         failMsg={failMsg}
         setFailMsg={setFailMsg}
+        fieldError={fieldError}
+        languageError={languageError}
+        passingGradeError={passingGradeError}
+        nameError={nameError}
+        emailError={emailError}
       />
       <EmailForm
         setSubject={setSubject}
@@ -71,10 +103,13 @@ const NewTest = () => {
         setPassingEditor={setPassingEditor}
         failingEditor={failingEditor}
         setFailingEditor={setFailingEditor}
+        subjectError={subjectError}
       />
-      <Button className="ui green button" onClick={newTestHandler}>
-        Create New Test
-      </Button>
+      <Container textAlign="right">
+        <Button className="ui green button" onClick={newTestHandler}>
+          Create New Test
+        </Button>
+      </Container>
     </Container>
   );
 };

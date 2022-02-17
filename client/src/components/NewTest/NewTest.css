@@ -1,0 +1,6 @@
+.new-test-container {
+    display: flexbox;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-items: flex-start;
+}

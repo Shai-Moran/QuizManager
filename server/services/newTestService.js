@@ -1,11 +1,12 @@
-const Email = require('../models/Email');
-const Test = require('../models/Test');
+let Email = require('../models/Email');
+let Test = require('../models/Test');
 
 class NewTestService {
   addTest(test) {
     console.log(test.subject);
     const newTest = new Test({
       id: test.testId,
+      field: test.field,
       name: test.name,
       lastUpdated: test.lastUpdated,
       language: test.language,
