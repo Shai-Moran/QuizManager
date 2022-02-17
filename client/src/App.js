@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NewTest from './components/NewTest/NewTest';
 import NewQuestion from './components/NewQuestion/NewQuestion';
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 import './App.css';
-
 
 function App() {
   return (
@@ -11,7 +10,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="new-test" element={<NewTest />} />
-          <Route path="new-question" element={<NewQuestion/>}/>
+          <Route path="new-question" element={<NewQuestion />} />
+          <Route path="test-added" element={<h1>Test Added!</h1>} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -25,6 +25,7 @@ const NewTestForm = (props) => {
       <Header textAlign="left">
         Field:
         <Form.Select
+          error={props.fieldError}
           selection
           placeholder="Select a Field"
           options={fields}
@@ -34,6 +35,7 @@ const NewTestForm = (props) => {
       <Header textAlign="left">
         Language:
         <Form.Select
+          error={props.languageError}
           selection
           placeholder="Select a Language"
           options={languageOptions}
@@ -43,6 +45,7 @@ const NewTestForm = (props) => {
       <Header textAlign="left">
         Test Name:
         <Form.Input
+          error={props.nameError}
           fluid
           placeholder="Test Name"
           onChange={(e) => props.setName(e.target.value)}
@@ -51,6 +54,7 @@ const NewTestForm = (props) => {
       <Header textAlign="left">
         Creater Email:
         <Form.Input
+          error={props.emailError}
           fluid
           placeholder="Email"
           onChange={(e) => props.setEmail(e.target.value)}
@@ -59,6 +63,7 @@ const NewTestForm = (props) => {
       <Header textAlign="left">
         Passing Grade:
         <Form.Input
+          error={props.passingGradeError}
           fluid
           type="Number"
           onChange={(e) => props.setPassingGrade(e.target.value)}
