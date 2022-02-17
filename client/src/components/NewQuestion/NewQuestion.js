@@ -9,7 +9,10 @@ const NewQuestion = () => {
   const [points, setPoints] = useState(0);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [answers, setAnswers] = useState([]);
+  const [answer1, setAnswer1] = useState('');
+  const [answer2, setAnswer2] = useState('');
+  const [answer3, setAnswer3] = useState('');
+  const [answer4, setAnswer4] = useState('');
 
   return (
     <Container>
@@ -20,8 +23,14 @@ const NewQuestion = () => {
         setPoints={setPoints}
         setTitle={setTitle}
         setContent={setContent}
-        setAnswers={setAnswers}
-        answers={answers}
+        setAnswer1={setAnswer1}
+        setAnswer2={setAnswer2}
+        setAnswer3={setAnswer3}
+        setAnswer4={setAnswer4}
+        answer1={answer1}
+        answer2={answer2}
+        answer3={answer3}
+        answer4={answer4}
       />
     </Container>
   );

@@ -1,7 +1,10 @@
 import React ,{ useState, useEffect } from "react";
 import "./NewQuestionForm.css"
 import { Header, Form } from "semantic-ui-react";
-import Answer from "../Answer/Answer";
+import Answer from "../Answer/Answer1";
+import Answer2 from "../Answer/Answer2";
+import Answer3 from "../Answer/Answer3";
+import Answer4 from "../Answer/Answer4";
 
 const NewQuestionForm = (props) => {
   const questionType = [
@@ -9,10 +12,13 @@ const NewQuestionForm = (props) => {
     { key: 'MultipleSelectionQuestion', value: 'MultipleSelectionQuestion', text: 'MultipleSelectionQuestion' }
   ];
 
-  const [answerCounter, setAnswerCounter] = useState([1, 2, 3, 4]);
+  //const [answerCounter, setAnswerCounter] = useState([1, 2, 3, 4]);
   
   useEffect(() => {
-    props.setAnswers('AAA')
+    props.setAnswer1('')
+    props.setAnswer2('')
+    props.setAnswer3('')
+    props.setAnswer4('')
   }, []) 
   return (
     <Form>
@@ -49,14 +55,34 @@ const NewQuestionForm = (props) => {
       </Header>
       <Header textAlign="left">
         Answers:
-        {answerCounter.map((index) => {
+        {/* {answerCounter.map((index) => {
           return (<Answer
           id = {index}
-          setData = {props.setAnswers()}
-          data = {props.answers}
+          setData = {props.setAnswer1()}
+          data = {props.answer1}
           />)
-        })}
-        <button onClick={() => console.log(props.answers)}>Test</button>
+        })} */}
+        <Answer
+          id = {1}
+          setData = {props.setAnswer1()}
+          data = {props.answer1}
+          />
+          <Answer2
+          id = {2}
+          setData = {props.setAnswer2()}
+          data = {props.answer2}
+          />
+          <Answer3
+          id = {3}
+          setData = {props.setAnswer3()}
+          data = {props.answer3}
+          />
+          <Answer4
+          id = {4}
+          setData = {props.setAnswer4()}
+          data = {props.answer4}
+          />
+        <button onClick={() => console.log(props.answer1)}>Test</button>
       </Header>
     </Form>
     );

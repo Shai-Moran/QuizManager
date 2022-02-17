@@ -1,6 +1,6 @@
 import { Checkbox, Input } from "semantic-ui-react"
 
-const Answers = (props) => {
+const Answer3 = (props) => {
     const onChangeHandler = (e) => {
         const {name, value} = e.target
         props.setData(prevState => ({...prevState, [name]:value}))
@@ -18,4 +18,4 @@ const Answers = (props) => {
     )
 }
 
-export default Answers
+export default Answer3
