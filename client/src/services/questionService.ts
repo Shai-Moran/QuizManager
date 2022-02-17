@@ -1,16 +1,12 @@
 import http from "./httpService";
-
-export interface Question {
-  Id: number;
-  Title: string;
-  Content: string;
-}
+import axios from 'axios';
 
 const serverRoute = "/api/Questions/";
 
 const QuestionService = {
   async getAllQuestions() {
-    return await http.get(serverRoute + "getQuestions");
+    const data = await axios.get('http://localhost:4000/api/questions/getAllQuestions');
+    return data;
   },
 
   async addQuestion(question: any) {
