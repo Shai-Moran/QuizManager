@@ -35,6 +35,7 @@ const NewTest = () => {
 
   const newTestHandler = () => {
     const date = new Date();
+    const id = uuidv4();
 
     if (field === '') {
       setFieldError(true);
@@ -50,7 +51,7 @@ const NewTest = () => {
       setSubjectError(true);
     } else {
       const newTest = {
-        testId: uuidv4(),
+        testId: id,
         field: field,
         name: name,
         lastUpdated: `${date.getDate()}/${
@@ -62,6 +63,7 @@ const NewTest = () => {
         createrEmail: email,
         passingGrade: passingGrade,
         answerReview: false,
+        testUrl: `http://localhost:3000/api/startTest?id=${id}`,
         certificateUtl: 'abc',
         passingText: successMsg,
         failText: failMsg,

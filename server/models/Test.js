@@ -42,6 +42,10 @@ const TestSchema = {
     type: Boolean,
     required: true
   },
+  testUrl: {
+      type: String,
+      required: true
+  },
   certificateUtl: {
     type: String,
     required: true

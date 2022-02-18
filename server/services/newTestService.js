@@ -3,7 +3,6 @@ let Test = require('../models/Test');
 
 class NewTestService {
   addTest(test) {
-    console.log(test.subject);
     const newTest = new Test({
       id: test.testId,
       field: test.field,
@@ -15,6 +14,7 @@ class NewTestService {
       createrEmail: test.createrEmail,
       emailId: test.emailId,
       answerReview: test.answerReview,
+      testUrl: test.testUrl,
       certificateUtl: test.certificateUtl,
       passingText: test.passingText,
       failText: test.failText
