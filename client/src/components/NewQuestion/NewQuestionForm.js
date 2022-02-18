@@ -15,6 +15,7 @@ const NewQuestionForm = (props) => {
       <Header textAlign="left">
         Question Type:
         <Form.Select
+          error={props.questionType}
           selection
           placeholder="Select a question Type"
           options={questionType}
@@ -24,21 +25,23 @@ const NewQuestionForm = (props) => {
       <Header textAlign="left">
         Title:
         <Form.Input
-          fluid
+          error={props.titleError}
           placeholder="Title"
           onChange={(e) => props.setTitle(e.target.value)}
         />
       </Header>
       <Header textAlign="left">
         Content:
-        <Form.Input      
+        <Form.Input
+          error={props.contentError}      
           placeholder="Content"
           onChange={(e) => props.setContent(e.target.value)}
         />
       </Header>
       <Header textAlign="left">
         Points:
-        <Form.Input         
+        <Form.Input 
+          error={props.pointsError}        
           type="Number"
           onChange={(e) => props.setPoints(e.target.value)}
         />
@@ -46,18 +49,22 @@ const NewQuestionForm = (props) => {
       <Header textAlign="left">
         Answers:
         <Answer
+          error={props.answer1Error}
           setData = {props.setAnswer1}
           data = {props.answer1}
           />
           <Answer
+          error={props.answer2Error}
           setData = {props.setAnswer2}
           data = {props.answer2}
           />
           <Answer
+          error={props.answer3Error}
           setData = {props.setAnswer3}
           data = {props.answer3}
           />
           <Answer
+          error={props.answer4Error}
           setData = {props.setAnswer4}
           data = {props.answer4}
           />
