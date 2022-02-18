@@ -2,14 +2,25 @@ import React ,{ useState, useEffect } from "react";
 import "./NewQuestionForm.css"
 import { Header, Form } from "semantic-ui-react";
 import Answer from "../Answer/Answer";
+import getFieldsService from '../../services/getFieldsService';
 
 const NewQuestionForm = (props) => {
- 
+  const [fields, setFields] = useState('');
   const questionType = [
     { key: 'SingleChoiceQuestion', value: 'SingleChoiceQuestion', text: 'SingleChoiceQuestion' },
     { key: 'MultipleSelectionQuestion', value: 'MultipleSelectionQuestion', text: 'MultipleSelectionQuestion' }
   ];
   
+  useEffect(async () => {
+    var fieldsData = await getFieldsService.getFields();
+    fieldsData.data.map((f) => {
+      setFields((prevState) => [
+        ...prevState,
+        { key: f.fieldName, value: f.fieldName, text: f.fieldName }
+      ]);
+    });
+  }, []);
+
   return (
     <Form>
       <Header textAlign="left">
