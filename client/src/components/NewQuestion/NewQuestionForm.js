@@ -4,16 +4,12 @@ import { Header, Form } from "semantic-ui-react";
 import Answer from "../Answer/Answer";
 
 const NewQuestionForm = (props) => {
+ 
   const questionType = [
     { key: 'SingleChoiceQuestion', value: 'SingleChoiceQuestion', text: 'SingleChoiceQuestion' },
     { key: 'MultipleSelectionQuestion', value: 'MultipleSelectionQuestion', text: 'MultipleSelectionQuestion' }
   ];
-
-  const [answerCounter, setAnswerCounter] = useState([1, 2, 3, 4]);
   
-  useEffect(() => {
-    props.setAnswers('AAA')
-  }, []) 
   return (
     <Form>
       <Header textAlign="left">
@@ -49,14 +45,22 @@ const NewQuestionForm = (props) => {
       </Header>
       <Header textAlign="left">
         Answers:
-        {answerCounter.map((index) => {
-          return (<Answer
-          id = {index}
-          setData = {props.setAnswers()}
-          data = {props.answers}
-          />)
-        })}
-        <button onClick={() => console.log(props.answers)}>Test</button>
+        <Answer
+          setData = {props.setAnswer1}
+          data = {props.answer1}
+          />
+          <Answer
+          setData = {props.setAnswer2}
+          data = {props.answer2}
+          />
+          <Answer
+          setData = {props.setAnswer3}
+          data = {props.answer3}
+          />
+          <Answer
+          setData = {props.setAnswer4}
+          data = {props.answer4}
+          />
       </Header>
     </Form>
     );
