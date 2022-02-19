@@ -28,6 +28,9 @@ const NewQuestion = () => {
   const [answer4Error, setAnswer4Error] = useState(false);
 
   const newQuestionHandler = () => {
+    const date = new Date();
+    const id = uuidv4();
+   
   if (questionType === '') {
     setQuestionTypeError(true);
   } else if (language === '') {
@@ -48,14 +51,18 @@ const NewQuestion = () => {
     setAnswer4Error(true);
   } else {
     const newQuestion = {
-      questionId: uuidv4(),
+      questionId: id,
       title: title,
       language: language,
       points: points,
+      lastUpdated: `${date.getDate()}/${
+        date.getMonth() + 1
+      }/${date.getFullYear()}`,
       answer1: answer1,
       answer2: answer2,
       answer3: answer3,
-      answer4: answer4
+      answer4: answer4,
+      questionUrl: `http://localhost:3000/api/questions?id=${id}`,
     }
     QuestionService.addQuestion(newQuestion);
     navigation('/question-added');

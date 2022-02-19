@@ -4,6 +4,7 @@ import NewQuestion from './components/NewQuestion/NewQuestion';
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 import TestManager from './components/TestManager/TestManager';
+import QuestionManager from './components/QuestionManager/QuestionManager';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
           <Route path="new-question" element={<NewQuestion />} />
           <Route path="tests" element={<TestManager />} />
           <Route path="test-added" element={<h1>Test Added!</h1>} />
+          <Route path="questions" element={<QuestionManager/>}/>
+          <Route path="question-added" element={<h1>Question Added!</h1>} />
         </Routes>
       </BrowserRouter>
     </div>
