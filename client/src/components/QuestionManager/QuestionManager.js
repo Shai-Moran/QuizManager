@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Table } from 'semantic-ui-react';
-import allQuestionsService from '../../services/allQuestionsService';
+import questionsService from '../../services/questionService';
 import QuestionRow from './QuestionRow';
 
 const QuestionManager = () => {
   const [questions, setQuestions] = useState([]);
 
   useEffect(async () => {
-    var questionsData = await allQuestionsService.getAllQuestions();
+    var questionsData = await questionsService.getAllQuestions();
     questionsData.data.map((question) => {
       setQuestions((prevState) => [...prevState, question]);
     });
@@ -29,8 +29,8 @@ const QuestionManager = () => {
             <QuestionRow
               id={question.id}
               title={question.title}
+              content={question.content}
               numOfAnswers={question.answers.length}
-              lastUpdated={question.lastUpdated}
             />
           );
         })}

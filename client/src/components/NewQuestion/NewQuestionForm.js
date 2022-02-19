@@ -2,25 +2,17 @@ import React ,{ useState, useEffect } from "react";
 import "./NewQuestionForm.css"
 import { Header, Form } from "semantic-ui-react";
 import Answer from "../Answer/Answer";
-import getFieldsService from '../../services/getFieldsService';
 
 const NewQuestionForm = (props) => {
-  const [fields, setFields] = useState('');
   const questionType = [
     { key: 'SingleChoiceQuestion', value: 'SingleChoiceQuestion', text: 'SingleChoiceQuestion' },
     { key: 'MultipleSelectionQuestion', value: 'MultipleSelectionQuestion', text: 'MultipleSelectionQuestion' }
   ];
+  const viewAnswers = [
+    { key: 'Horizontal', value: 'Horizontal', text: 'Horizontal' },
+    { key: 'Vertical', value: 'Vertical', text: 'Vertical' }
+  ];
   
-  useEffect(async () => {
-    var fieldsData = await getFieldsService.getFields();
-    fieldsData.data.map((f) => {
-      setFields((prevState) => [
-        ...prevState,
-        { key: f.fieldName, value: f.fieldName, text: f.fieldName }
-      ]);
-    });
-  }, []);
-
   return (
     <Form>
       <Header textAlign="left">
@@ -58,6 +50,14 @@ const NewQuestionForm = (props) => {
         />
       </Header>
       <Header textAlign="left">
+        Tags:
+        <Form.Input 
+          error={props.tagsError}        
+          type="Text"
+          onChange={(e) => props.setTags(e.target.value)}
+        />
+      </Header>
+      <Header textAlign="left">
         Answers:
         <Answer
           error={props.answer1Error}
@@ -79,6 +79,15 @@ const NewQuestionForm = (props) => {
           setData = {props.setAnswer4}
           data = {props.answer4}
           />
+      </Header>
+      <Header textAlign="left">
+        viewAnswers:
+        <Form.Select
+          selection
+          placeholder="Select a view answers"
+          options={viewAnswers}
+          onChange={(e) => props.setViewAnswers(e.target.innerText)}
+        />
       </Header>
     </Form>
     );

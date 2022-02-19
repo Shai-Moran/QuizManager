@@ -12,7 +12,7 @@ const QuestionSchema = {
   },
   content: {
     type: String,
-    required: true
+    required: false
   },
   answers: {
     type: Array,
@@ -20,7 +20,10 @@ const QuestionSchema = {
   },
   questionType: {
     type: String,
-    enum: ['SingleChoiceQuestion, MultipleSelectionQuestion'],
+    required: true
+  },
+  viewAnswers: {
+    type: String,
     required: true
   },
   tags: {
