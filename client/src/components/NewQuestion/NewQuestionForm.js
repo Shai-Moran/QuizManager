@@ -4,6 +4,7 @@ import { Header, Form } from "semantic-ui-react";
 import Answer from "../Answer/Answer";
 
 const NewQuestionForm = (props) => {
+
   const questionType = [
     { key: 'SingleChoiceQuestion', value: 'SingleChoiceQuestion', text: 'SingleChoiceQuestion' },
     { key: 'MultipleSelectionQuestion', value: 'MultipleSelectionQuestion', text: 'MultipleSelectionQuestion' }
@@ -12,7 +13,10 @@ const NewQuestionForm = (props) => {
     { key: 'Horizontal', value: 'Horizontal', text: 'Horizontal' },
     { key: 'Vertical', value: 'Vertical', text: 'Vertical' }
   ];
-  
+
+  let text = "";
+  const myArray = text.split(" ")
+
   return (
     <Form>
       <Header textAlign="left">

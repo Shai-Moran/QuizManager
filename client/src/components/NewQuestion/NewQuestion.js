@@ -33,7 +33,28 @@ const NewQuestion = () => {
   const newQuestionHandler = () => {
     const id = uuidv4();
     var answers = [answer1, answer2, answer3, answer4]
-    console.log(questionType)
+
+    if (questionType === '') {
+      setQuestionTypeError(true);
+    } else if (language === '') {
+      setLanguageError(true);
+    } else if (points > 10 || points < 0) {
+      setPointsError(true);
+    } else if (title === '') {
+      setTitleError(true);
+    } else if (tags === '') {
+      setTagsError(true);
+    } else if (content === '') {
+      setContentError(true);
+    } else if (answer1 === ''){
+      setAnswer1Error(true);
+    } else if (answer2 === ''){
+      setAnswer2Error(true);
+    } else if (answer3 === ''){
+      setAnswer3Error(true);
+    } else if (answer4 === ''){
+      setAnswer4Error(true);
+    } else {
     const newQuestion = {
       id: id,
       title: title,
@@ -43,17 +64,17 @@ const NewQuestion = () => {
       viewAnswers: viewAnswers,
       tags: [],
       points: points,
-    }
+    } 
     QuestionService.addQuestion(newQuestion);
     navigation('/question-added');
   } 
-
+}
   return (
     <Container>
       <h1>New Question</h1>
       <NewQuestionForm
         setQuestionType={setQuestionType}
-        setLenguage={setLanguage}
+        setLanguage={setLanguage}
         setPoints={setPoints}
         setTitle={setTitle}
         setTags={setTags}
@@ -67,6 +88,8 @@ const NewQuestion = () => {
         answer2={answer2}
         answer3={answer3}
         answer4={answer4}
+        tags={tags}
+        title={title}
         viewAnswers={viewAnswers}        
         questionTypeError={questionTypeError}
         languageError={languageError}
