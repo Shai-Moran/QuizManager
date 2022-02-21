@@ -9,18 +9,16 @@ const NewQuestion = () => {
   const navigation = useNavigate();
   const [questionType, setQuestionType] = useState('')
   const [viewAnswers, setViewAnswers] = useState('')
-  const [language, setLanguage] = useState('');
   const [points, setPoints] = useState(0);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState('');
   const [answer1, setAnswer1] = useState({content: '', isTrue: false});
   const [answer2, setAnswer2] = useState({content: '', isTrue: false});
   const [answer3, setAnswer3] = useState({content: '', isTrue: false});
   const [answer4, setAnswer4] = useState({content: '', isTrue: false});
 
   const [questionTypeError, setQuestionTypeError] = useState(false);
-  const [languageError, setLanguageError] = useState(false);
   const [pointsError, setPointsError] = useState(false);
   const [titleError, setTitleError] = useState(false);
   const [tagsError, setTagsError] = useState(false);
@@ -33,11 +31,10 @@ const NewQuestion = () => {
   const newQuestionHandler = () => {
     const id = uuidv4();
     var answers = [answer1, answer2, answer3, answer4]
+    const myTags = tags.split(", ")
 
     if (questionType === '') {
       setQuestionTypeError(true);
-    } else if (language === '') {
-      setLanguageError(true);
     } else if (points > 10 || points < 0) {
       setPointsError(true);
     } else if (title === '') {
@@ -57,12 +54,12 @@ const NewQuestion = () => {
     } else {
     const newQuestion = {
       id: id,
+      questionType: questionType,
       title: title,
       content: content,
       answers: answers,
-      questionType: questionType,
       viewAnswers: viewAnswers,
-      tags: [],
+      tags: myTags,
       points: points,
     } 
     QuestionService.addQuestion(newQuestion);
@@ -74,7 +71,6 @@ const NewQuestion = () => {
       <h1>New Question</h1>
       <NewQuestionForm
         setQuestionType={setQuestionType}
-        setLanguage={setLanguage}
         setPoints={setPoints}
         setTitle={setTitle}
         setTags={setTags}
@@ -92,7 +88,6 @@ const NewQuestion = () => {
         title={title}
         viewAnswers={viewAnswers}        
         questionTypeError={questionTypeError}
-        languageError={languageError}
         pointsError={pointsError}
         titleError={titleError}
         tagsError={tagsError}

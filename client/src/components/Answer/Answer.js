@@ -2,7 +2,7 @@ import { Checkbox, Input } from "semantic-ui-react"
 
 const Answer = (props) => {
     const onChangeHandlerCheckBox = (e) => {
-        props.setData({content: props.data.content, isTrue: e.target.value}) 
+        props.setData({content: props.data.content, isTrue: !props.data.isTrue}) 
     }
 
     const onChangeHandlerInput = (e) => {

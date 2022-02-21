@@ -14,15 +14,12 @@ const NewQuestionForm = (props) => {
     { key: 'Vertical', value: 'Vertical', text: 'Vertical' }
   ];
 
-  let text = "";
-  const myArray = text.split(" ")
-
   return (
     <Form>
       <Header textAlign="left">
         Question Type:
         <Form.Select
-          error={props.questionType}
+          error={props.questionTypeError}
           selection
           placeholder="Select a question Type"
           options={questionType}
