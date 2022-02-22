@@ -84,6 +84,7 @@ const NewQuestionForm = (props) => {
       <Header textAlign="left">
         viewAnswers:
         <Form.Select
+          error={props.viewAnswersError}
           selection
           placeholder="Select a view answers"
           options={viewAnswers}

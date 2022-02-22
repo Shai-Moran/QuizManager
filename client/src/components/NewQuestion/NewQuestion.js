@@ -27,6 +27,7 @@ const NewQuestion = () => {
   const [answer2Error, setAnswer2Error] = useState(false);
   const [answer3Error, setAnswer3Error] = useState(false);
   const [answer4Error, setAnswer4Error] = useState(false);
+  const [viewAnswersError, setViewAnswersError] = useState(false)
 
   const newQuestionHandler = () => {
     const id = uuidv4();
@@ -51,6 +52,8 @@ const NewQuestion = () => {
       setAnswer3Error(true);
     } else if (answer4 === ''){
       setAnswer4Error(true);
+    } else if (viewAnswers === ''){
+      setViewAnswersError(true)
     } else {
     const newQuestion = {
       id: id,
@@ -96,6 +99,7 @@ const NewQuestion = () => {
         answer2Error={answer2Error}
         answer3Error={answer3Error}
         answer4Error={answer4Error}
+        viewAnswersError={viewAnswersError}
       />
       <Container textAlign="right">
         <Button className="ui green button" onClick={newQuestionHandler}>
