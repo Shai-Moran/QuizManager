@@ -27,7 +27,6 @@ const QuestionManager = () => {
               content={question.content}
               numOfAnswers={question.answers.length}
             />
-
           );
         })}
       </Table.Body>
