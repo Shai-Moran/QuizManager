@@ -69,6 +69,7 @@ const NewQuestion = () => {
     navigation('/question-added');
   } 
 }
+
   return (
     <Container>
       <h1>New Question</h1>

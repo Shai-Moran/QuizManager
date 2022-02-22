@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Table } from 'semantic-ui-react';
-import questionsService from '../../services/questionService';
+import React, { useState } from 'react';
+import { Table } from 'semantic-ui-react';
 import QuestionRow from './QuestionRow';
 
 const QuestionManager = () => {
   const [questions, setQuestions] = useState([]);
-
-  useEffect(async () => {
-    var questionsData = await questionsService.getAllQuestions();
-    questionsData.data.map((question) => {
-      setQuestions((prevState) => [...prevState, question]);
-    });
-  }, []);
 
   return (
     <Table celled selectable>
@@ -35,9 +27,9 @@ const QuestionManager = () => {
               content={question.content}
               numOfAnswers={question.answers.length}
             />
+
           );
         })}
-        {console.log(questions)}
       </Table.Body>
     </Table>
   );

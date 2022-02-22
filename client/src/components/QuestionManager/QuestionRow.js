@@ -1,18 +1,15 @@
-import React from 'react';
-import { Button, Container, Table } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 
-const QuestionRow = (props) => {
+const QuestionRow = () => {
   return (
     <Table.Row>
-      <Table.Cell>{props.title}</Table.Cell>
-      <Table.Cell>{props.numOfAnswers}</Table.Cell>
-      <Table.Cell>{props.lastUpdated}</Table.Cell>
-      <Table.Cell>
-        <Container>
-          <Button>Update</Button>
-          <Button>Copy Link</Button>
-        </Container>
-      </Table.Cell>
+      <Table.Cell>{this.props.questionType}</Table.Cell>
+      <Table.Cell>{this.props.title}</Table.Cell>
+      <Table.Cell>{this.props.content}</Table.Cell>
+      <Table.Cell>{this.props.answers}</Table.Cell>
+      <Table.Cell>{this.props.viewAnswers}</Table.Cell>
+      <Table.Cell>{this.props.tags}</Table.Cell>
+      <Table.Cell>{this.props.points}</Table.Cell>
     </Table.Row>
   );
 };
