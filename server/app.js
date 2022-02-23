@@ -14,7 +14,7 @@ connection.once('open', () => console.log('database connected successfully'));
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/api/Questions', questionRouter);
+app.use('/api/questions', questionRouter);
 app.use('/api/tests', testRouter);
 app.use('/api/fields', fieldRouter);
 

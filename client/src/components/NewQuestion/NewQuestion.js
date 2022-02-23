@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Button } from 'semantic-ui-react';
 import { v4 as uuidv4 } from 'uuid';
 import QuestionService from '../../services/questionService';
-import QuestionManager from '../QuestionManager/QuestionManager';
 
 const NewQuestion = () => {
   const navigation = useNavigate();

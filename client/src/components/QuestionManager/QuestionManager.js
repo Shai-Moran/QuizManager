@@ -1,12 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table } from 'semantic-ui-react';
+import getAllQuestions from '../../services/allQuestionsService';
 import QuestionRow from './QuestionRow';
 
 const QuestionManager = () => {
   const [questions, setQuestions] = useState([]);
+  const [tags, setTags] = useState('');
 
+  useEffect(async () => {
+   const allQuestions = await getAllQuestions.getAllQuestions()
+   allQuestions.data.map((question) => {
+     setQuestions((prevState) => [...prevState, question])
+   })
+   if (tags !== ''){
+    const myTags = tags.split(", ")
+     setQuestions([])
+     allQuestions.data.map(question => {
+       myTags.map(tag => {
+         question.tags.map(t => {
+           if(tag === t){
+            setQuestions((prevState) => [...prevState, question])
+           }
+         })
+       })
+     })
+   } 
+  }, [tags])
+  
   return (
-    <Table celled selectable>
+    <div>
+      <input type='text' onChange={e => setTags(e.target.value)}/>
+<Table celled selectable>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>Question Type</Table.HeaderCell>
@@ -25,13 +49,13 @@ const QuestionManager = () => {
               id={question.id}
               title={question.title}
               content={question.content}
-              numOfAnswers={question.answers.length}
             />
           );
         })}
       </Table.Body>
     </Table>
-  );
+    </div>
+  );    
 };
-
+ 
 export default QuestionManager

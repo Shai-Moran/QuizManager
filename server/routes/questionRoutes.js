@@ -2,16 +2,16 @@ const express = require("express");
 const router = express.Router();
 const newQuestionService = require('../services/newQuestionService')
 const asyncHandler = require("../helpers/asyncHandler");
+const getAllQuestionsService = require("../services/getAllQuestionsService");
 
-/* // Get questions from json
+// Get questions from json
 router.get(
-  "/getQuestions",
+  "/getAll",
   asyncHandler(async (req, res) => {
-    const data = await controller.getAllQuestions();
-
+    const data = await getAllQuestionsService.getAllQuestions();
     res.send(data);
   })
-); */
+); 
 
 // Add question to the list in json
 router.post(
