@@ -6,7 +6,7 @@ const asyncHandler = require('../helpers/asyncHandler');
 router.get(
   '/getFields',
   asyncHandler(async (req, res) => {
-    const data = await GetFieldsService.getFields();
+    const data = await GetFieldsService.getFields(req.body.field);
     res.send(data);
   })
 );

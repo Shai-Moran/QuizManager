@@ -1,8 +1,8 @@
 let Test = require('../models/Test');
 
 class GetAllTestsService {
-  async getAllTests() {
-    const data = await Test.find();
+  async getAllTestsByField(field) {
+    const data = await Test.find({ field: field });
     return JSON.stringify(data);
   }
 }

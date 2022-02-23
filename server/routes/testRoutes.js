@@ -16,10 +16,10 @@ router.post(
   })
 );
 
-router.get(
-  '/getAll',
+router.post(
+  '/getAllByField',
   asyncHandler(async (req, res) => {
-    const data = await getAllTestsService.getAllTests();
+    const data = await getAllTestsService.getAllTestsByField(req.body.field);
     res.send(data);
   })
 );
