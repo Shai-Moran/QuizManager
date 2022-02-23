@@ -4,6 +4,7 @@ import { Header, Form } from "semantic-ui-react";
 import Answer from "../Answer/Answer";
 
 const NewQuestionForm = (props) => {
+
   const questionType = [
     { key: 'SingleChoiceQuestion', value: 'SingleChoiceQuestion', text: 'SingleChoiceQuestion' },
     { key: 'MultipleSelectionQuestion', value: 'MultipleSelectionQuestion', text: 'MultipleSelectionQuestion' }
@@ -12,13 +13,13 @@ const NewQuestionForm = (props) => {
     { key: 'Horizontal', value: 'Horizontal', text: 'Horizontal' },
     { key: 'Vertical', value: 'Vertical', text: 'Vertical' }
   ];
-  
+
   return (
     <Form>
       <Header textAlign="left">
         Question Type:
         <Form.Select
-          error={props.questionType}
+          error={props.questionTypeError}
           selection
           placeholder="Select a question Type"
           options={questionType}
@@ -83,6 +84,7 @@ const NewQuestionForm = (props) => {
       <Header textAlign="left">
         viewAnswers:
         <Form.Select
+          error={props.viewAnswersError}
           selection
           placeholder="Select a view answers"
           options={viewAnswers}

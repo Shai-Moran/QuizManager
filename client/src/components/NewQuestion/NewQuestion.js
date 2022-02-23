@@ -4,23 +4,22 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Button } from 'semantic-ui-react';
 import { v4 as uuidv4 } from 'uuid';
 import QuestionService from '../../services/questionService';
+import QuestionManager from '../QuestionManager/QuestionManager';
 
 const NewQuestion = () => {
   const navigation = useNavigate();
   const [questionType, setQuestionType] = useState('')
   const [viewAnswers, setViewAnswers] = useState('')
-  const [language, setLanguage] = useState('');
   const [points, setPoints] = useState(0);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState('');
   const [answer1, setAnswer1] = useState({content: '', isTrue: false});
   const [answer2, setAnswer2] = useState({content: '', isTrue: false});
   const [answer3, setAnswer3] = useState({content: '', isTrue: false});
   const [answer4, setAnswer4] = useState({content: '', isTrue: false});
 
   const [questionTypeError, setQuestionTypeError] = useState(false);
-  const [languageError, setLanguageError] = useState(false);
   const [pointsError, setPointsError] = useState(false);
   const [titleError, setTitleError] = useState(false);
   const [tagsError, setTagsError] = useState(false);
@@ -29,31 +28,54 @@ const NewQuestion = () => {
   const [answer2Error, setAnswer2Error] = useState(false);
   const [answer3Error, setAnswer3Error] = useState(false);
   const [answer4Error, setAnswer4Error] = useState(false);
+  const [viewAnswersError, setViewAnswersError] = useState(false)
 
   const newQuestionHandler = () => {
     const id = uuidv4();
     var answers = [answer1, answer2, answer3, answer4]
-    console.log(questionType)
+    const myTags = tags.split(", ")
+
+    if (questionType === '') {
+      setQuestionTypeError(true);
+    } else if (points > 10 || points < 0) {
+      setPointsError(true);
+    } else if (title === '') {
+      setTitleError(true);
+    } else if (tags === '') {
+      setTagsError(true);
+    } else if (content === '') {
+      setContentError(true);
+    } else if (answer1 === ''){
+      setAnswer1Error(true);
+    } else if (answer2 === ''){
+      setAnswer2Error(true);
+    } else if (answer3 === ''){
+      setAnswer3Error(true);
+    } else if (answer4 === ''){
+      setAnswer4Error(true);
+    } else if (viewAnswers === ''){
+      setViewAnswersError(true)
+    } else {
     const newQuestion = {
       id: id,
+      questionType: questionType,
       title: title,
       content: content,
       answers: answers,
-      questionType: questionType,
       viewAnswers: viewAnswers,
-      tags: [],
+      tags: myTags,
       points: points,
-    }
+    } 
     QuestionService.addQuestion(newQuestion);
     navigation('/question-added');
   } 
+}
 
   return (
     <Container>
       <h1>New Question</h1>
       <NewQuestionForm
         setQuestionType={setQuestionType}
-        setLenguage={setLanguage}
         setPoints={setPoints}
         setTitle={setTitle}
         setTags={setTags}
@@ -67,9 +89,10 @@ const NewQuestion = () => {
         answer2={answer2}
         answer3={answer3}
         answer4={answer4}
+        tags={tags}
+        title={title}
         viewAnswers={viewAnswers}        
         questionTypeError={questionTypeError}
-        languageError={languageError}
         pointsError={pointsError}
         titleError={titleError}
         tagsError={tagsError}
@@ -78,6 +101,7 @@ const NewQuestion = () => {
         answer2Error={answer2Error}
         answer3Error={answer3Error}
         answer4Error={answer4Error}
+        viewAnswersError={viewAnswersError}
       />
       <Container textAlign="right">
         <Button className="ui green button" onClick={newQuestionHandler}>
