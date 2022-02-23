@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Table, Input } from 'semantic-ui-react';
+import { Container, Table, Input, Header } from 'semantic-ui-react';
 import TestRow from './TestRow/TestRow';
 import allTestsService from '../../services/allTestsService';
 
@@ -8,15 +8,20 @@ const TestManager = () => {
   const [search, setSearch] = useState('');
 
   useEffect(async () => {
-    if (search === '') {
-      const urlParams = new URLSearchParams(window.location.search);
-      const field = urlParams.get('field');
-      var testsData = await allTestsService.getAllTests(field);
+    setTests([]);
+    const urlParams = new URLSearchParams(window.location.search);
+    const field = urlParams.get('field');
+    var testsData = await allTestsService.getAllTests(field);
+    testsData.data.map((test) => {
+      setTests((prevState) => [...prevState, test]);
+    });
+    if (search !== '') {
+      setTests([]);
       testsData.data.map((test) => {
-        setTests((prevState) => [...prevState, test]);
+        if (test.name.includes(search)) {
+          setTests((prevState) => [...prevState, test]);
+        }
       });
-    } else {
-        
     }
   }, [search]);
 
@@ -28,7 +33,7 @@ const TestManager = () => {
       <Input
         onChange={(e) => setSearch(e.target.value)}
         type="text"
-        label="Search for test by name:"
+        placeholder="Search for test by name:"
       />
       <Table celled selectable>
         <Table.Header>
