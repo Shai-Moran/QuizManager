@@ -7,7 +7,9 @@ const TestManager = () => {
   const [tests, setTests] = useState([]);
 
   useEffect(async () => {
-    var testsData = await allTestsService.getAllTests();
+    const urlParams = new URLSearchParams(window.location.search);
+    const field = urlParams.get('field');
+    var testsData = await allTestsService.getAllTests(field);
     testsData.data.map((test) => {
       setTests((prevState) => [...prevState, test]);
     });
@@ -34,7 +36,6 @@ const TestManager = () => {
             />
           );
         })}
-        {console.log(tests)}
       </Table.Body>
     </Table>
   );
