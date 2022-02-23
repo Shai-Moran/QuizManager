@@ -6,6 +6,7 @@ import EmailForm from './EmailForm/EmailForm';
 import { EditorState } from 'draft-js';
 import newTestService from '../../services/newTestService';
 import { v4 as uuidv4 } from 'uuid';
+import QuestionSelector from './QuestionSelector/QuestionSelector';
 
 const NewTest = () => {
   const navigation = useNavigate();
@@ -17,6 +18,8 @@ const NewTest = () => {
   const [header, setHeader] = useState(() => EditorState.createEmpty());
   const [successMsg, setSuccessMsg] = useState(() => EditorState.createEmpty());
   const [failMsg, setFailMsg] = useState(() => EditorState.createEmpty());
+  const [questions, setQuestions] = useState([]);
+  const [selectedQuestions, setSelectedQuestions] = useState([]);
 
   const [subject, setSubject] = useState('');
   const [passingEditor, setPassingEditor] = useState(() =>
@@ -59,7 +62,7 @@ const NewTest = () => {
         }/${date.getFullYear()}`,
         language: language,
         opening: header,
-        questions: [],
+        questions: questions,
         createrEmail: email,
         passingGrade: passingGrade,
         answerReview: false,
@@ -77,6 +80,8 @@ const NewTest = () => {
       navigation('/test-added');
     }
   };
+
+  const questionsChanges = (id) => {};
 
   return (
     <Container className="new-test-container">
@@ -98,6 +103,11 @@ const NewTest = () => {
         passingGradeError={passingGradeError}
         nameError={nameError}
         emailError={emailError}
+      />
+      <QuestionSelector
+        questions={questions}
+        setQuestions={setQuestions}
+        questionsChanges={questionsChanges}
       />
       <EmailForm
         setSubject={setSubject}

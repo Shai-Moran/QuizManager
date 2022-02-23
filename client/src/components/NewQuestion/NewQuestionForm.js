@@ -1,13 +1,20 @@
-import React ,{ useState, useEffect } from "react";
-import "./NewQuestionForm.css"
-import { Header, Form } from "semantic-ui-react";
-import Answer from "../Answer/Answer";
+import React, { useState, useEffect } from 'react';
+import './NewQuestionForm.css';
+import { Header, Form } from 'semantic-ui-react';
+import Answer from '../Answer/Answer';
 
 const NewQuestionForm = (props) => {
-
   const questionType = [
-    { key: 'SingleChoiceQuestion', value: 'SingleChoiceQuestion', text: 'SingleChoiceQuestion' },
-    { key: 'MultipleSelectionQuestion', value: 'MultipleSelectionQuestion', text: 'MultipleSelectionQuestion' }
+    {
+      key: 'SingleChoiceQuestion',
+      value: 'SingleChoiceQuestion',
+      text: 'SingleChoiceQuestion'
+    },
+    {
+      key: 'MultipleSelectionQuestion',
+      value: 'MultipleSelectionQuestion',
+      text: 'MultipleSelectionQuestion'
+    }
   ];
   const viewAnswers = [
     { key: 'Horizontal', value: 'Horizontal', text: 'Horizontal' },
@@ -36,15 +43,15 @@ const NewQuestionForm = (props) => {
       </Header>
       <Header textAlign="left">
         Content:
-        <Form.Input     
+        <Form.Input
           placeholder="Content"
           onChange={(e) => props.setContent(e.target.value)}
         />
       </Header>
       <Header textAlign="left">
         Points:
-        <Form.Input 
-          error={props.pointsError}        
+        <Form.Input
+          error={props.pointsError}
           type="Number"
           onChange={(e) => props.setPoints(e.target.value)}
         />
@@ -52,8 +59,8 @@ const NewQuestionForm = (props) => {
       <Header textAlign="left">
         <p>*In tags you have to write a word and at the end ',' click on the space and write the next word </p>
         Tags:
-        <Form.Input 
-          error={props.tagsError}        
+        <Form.Input
+          error={props.tagsError}
           type="Text"
           onChange={(e) => props.setTags(e.target.value)}
         />
@@ -62,24 +69,24 @@ const NewQuestionForm = (props) => {
         Answers:
         <Answer
           error={props.answer1Error}
-          setData = {props.setAnswer1}
-          data = {props.answer1}
-          />
-          <Answer
+          setData={props.setAnswer1}
+          data={props.answer1}
+        />
+        <Answer
           error={props.answer2Error}
-          setData = {props.setAnswer2}
-          data = {props.answer2}
-          />
-          <Answer
+          setData={props.setAnswer2}
+          data={props.answer2}
+        />
+        <Answer
           error={props.answer3Error}
-          setData = {props.setAnswer3}
-          data = {props.answer3}
-          />
-          <Answer
+          setData={props.setAnswer3}
+          data={props.answer3}
+        />
+        <Answer
           error={props.answer4Error}
-          setData = {props.setAnswer4}
-          data = {props.answer4}
-          />
+          setData={props.setAnswer4}
+          data={props.answer4}
+        />
       </Header>
       <Header textAlign="left">
         viewAnswers:
@@ -92,7 +99,7 @@ const NewQuestionForm = (props) => {
         />
       </Header>
     </Form>
-    );
-  };
+  );
+};
 
 export default NewQuestionForm;

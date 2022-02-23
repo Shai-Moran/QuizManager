@@ -7,32 +7,31 @@ import QuestionService from '../../services/questionService';
 
 const NewQuestion = () => {
   const navigation = useNavigate();
-  const [questionType, setQuestionType] = useState('')
-  const [viewAnswers, setViewAnswers] = useState('')
+  const [questionType, setQuestionType] = useState('');
+  const [viewAnswers, setViewAnswers] = useState('');
   const [points, setPoints] = useState(0);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [tags, setTags] = useState('');
-  const [answer1, setAnswer1] = useState({content: '', isTrue: false});
-  const [answer2, setAnswer2] = useState({content: '', isTrue: false});
-  const [answer3, setAnswer3] = useState({content: '', isTrue: false});
-  const [answer4, setAnswer4] = useState({content: '', isTrue: false});
+  const [answer1, setAnswer1] = useState({ content: '', isTrue: false });
+  const [answer2, setAnswer2] = useState({ content: '', isTrue: false });
+  const [answer3, setAnswer3] = useState({ content: '', isTrue: false });
+  const [answer4, setAnswer4] = useState({ content: '', isTrue: false });
 
   const [questionTypeError, setQuestionTypeError] = useState(false);
   const [pointsError, setPointsError] = useState(false);
   const [titleError, setTitleError] = useState(false);
   const [tagsError, setTagsError] = useState(false);
-  const [contentError, setContentError] = useState(false);
   const [answer1Error, setAnswer1Error] = useState(false);
   const [answer2Error, setAnswer2Error] = useState(false);
   const [answer3Error, setAnswer3Error] = useState(false);
   const [answer4Error, setAnswer4Error] = useState(false);
-  const [viewAnswersError, setViewAnswersError] = useState(false)
+  const [viewAnswersError, setViewAnswersError] = useState(false);
 
   const newQuestionHandler = () => {
     const id = uuidv4();
-    var answers = [answer1, answer2, answer3, answer4]
-    const myTags = tags.split(", ")
+    var answers = [answer1, answer2, answer3, answer4];
+    const myTags = tags.split(', ');
 
     if (questionType === '') {
       setQuestionTypeError(true);
@@ -42,31 +41,31 @@ const NewQuestion = () => {
       setTitleError(true);
     } else if (tags === '') {
       setTagsError(true);
-    } else if (answer1 === ''){
+    } else if (answer1 === '') {
       setAnswer1Error(true);
-    } else if (answer2 === ''){
+    } else if (answer2 === '') {
       setAnswer2Error(true);
-    } else if (answer3 === ''){
+    } else if (answer3 === '') {
       setAnswer3Error(true);
-    } else if (answer4 === ''){
+    } else if (answer4 === '') {
       setAnswer4Error(true);
-    } else if (viewAnswers === ''){
-      setViewAnswersError(true)
+    } else if (viewAnswers === '') {
+      setViewAnswersError(true);
     } else {
-    const newQuestion = {
-      id: id,
-      questionType: questionType,
-      title: title,
-      content: content,
-      answers: answers,
-      viewAnswers: viewAnswers,
-      tags: myTags,
-      points: points,
-    } 
-    QuestionService.addQuestion(newQuestion);
-    navigation('/question-added');
-  } 
-}
+      const newQuestion = {
+        id: id,
+        questionType: questionType,
+        title: title,
+        content: content,
+        answers: answers,
+        viewAnswers: viewAnswers,
+        tags: myTags,
+        points: points
+      };
+      QuestionService.addQuestion(newQuestion);
+      navigation('/question-added');
+    }
+  };
 
   return (
     <Container>
@@ -88,12 +87,11 @@ const NewQuestion = () => {
         answer4={answer4}
         tags={tags}
         title={title}
-        viewAnswers={viewAnswers}        
+        viewAnswers={viewAnswers}
         questionTypeError={questionTypeError}
         pointsError={pointsError}
         titleError={titleError}
         tagsError={tagsError}
-        contentError={contentError}
         answer1Error={answer1Error}
         answer2Error={answer2Error}
         answer3Error={answer3Error}
@@ -109,4 +107,4 @@ const NewQuestion = () => {
   );
 };
 
-export default NewQuestion
+export default NewQuestion;

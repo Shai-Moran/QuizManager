@@ -31,6 +31,7 @@ const TestManager = () => {
         Test Managet:
       </Header>
       <Input
+        icon="search"
         onChange={(e) => setSearch(e.target.value)}
         type="text"
         placeholder="Search for test by name:"
