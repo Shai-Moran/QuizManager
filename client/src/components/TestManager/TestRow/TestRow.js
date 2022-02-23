@@ -1,7 +1,11 @@
 import React from 'react';
-import { Button, Container, Table } from 'semantic-ui-react';
+import { Button, Container, Table, Popup } from 'semantic-ui-react';
 
 const TestRow = (props) => {
+  const copyUrl = () => {
+    navigator.clipboard.writeText(props.testUrl);
+  };
+
   return (
     <Table.Row>
       <Table.Cell>{props.name}</Table.Cell>
@@ -10,7 +14,13 @@ const TestRow = (props) => {
       <Table.Cell>
         <Container>
           <Button>Update</Button>
-          <Button>Copy Link</Button>
+          <Popup
+            on="click"
+            hideOnScroll
+            trigger={<Button onClick={copyUrl}>Copy Link</Button>}
+          >
+            Url copied!
+          </Popup>
         </Container>
       </Table.Cell>
     </Table.Row>
