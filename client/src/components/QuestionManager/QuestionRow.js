@@ -1,4 +1,4 @@
-import { Table } from 'semantic-ui-react';
+import { Button, Table, TableCell } from 'semantic-ui-react';
 
 const QuestionRow = (props) => {
 
@@ -11,6 +11,9 @@ const QuestionRow = (props) => {
       <Table.Cell>{props.viewAnswers}</Table.Cell>
       <Table.Cell>{props.tags}</Table.Cell>
       <Table.Cell>{props.points}</Table.Cell>
+      <TableCell>
+        <Button>Edit</Button>
+      </TableCell>
     </Table.Row>
   );
 };

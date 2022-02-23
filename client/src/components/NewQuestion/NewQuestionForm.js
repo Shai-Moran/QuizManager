@@ -36,8 +36,7 @@ const NewQuestionForm = (props) => {
       </Header>
       <Header textAlign="left">
         Content:
-        <Form.Input
-          error={props.contentError}      
+        <Form.Input     
           placeholder="Content"
           onChange={(e) => props.setContent(e.target.value)}
         />
@@ -51,6 +50,7 @@ const NewQuestionForm = (props) => {
         />
       </Header>
       <Header textAlign="left">
+        <p>*In tags you have to write a word and at the end ',' click on the space and write the next word </p>
         Tags:
         <Form.Input 
           error={props.tagsError}        

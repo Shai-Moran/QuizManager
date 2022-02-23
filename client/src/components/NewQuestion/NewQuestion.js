@@ -42,8 +42,6 @@ const NewQuestion = () => {
       setTitleError(true);
     } else if (tags === '') {
       setTagsError(true);
-    } else if (content === '') {
-      setContentError(true);
     } else if (answer1 === ''){
       setAnswer1Error(true);
     } else if (answer2 === ''){

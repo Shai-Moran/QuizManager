@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import getAllQuestions from '../../services/allQuestionsService';
 import QuestionRow from './QuestionRow';
 
@@ -29,7 +29,8 @@ const QuestionManager = () => {
   
   return (
     <div>
-      <input type='text' onChange={e => setTags(e.target.value)}/>
+      <h1>Question Manager</h1>
+      search by tag: <input type='text' onChange={e => setTags(e.target.value)}/>
 <Table celled selectable>
       <Table.Header>
         <Table.Row>
@@ -49,7 +50,7 @@ const QuestionManager = () => {
               questionType={question.questionType}
               title={question.title}
               content={question.content}
-              answers={question.answers}
+              //answers={question.answers}
               viewAnswers={question.viewAnswers}
               tags={question.tags}
               points={question.points}
