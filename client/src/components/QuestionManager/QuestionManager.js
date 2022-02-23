@@ -49,7 +49,6 @@ const QuestionManager = () => {
               questionType={question.questionType}
               title={question.title}
               content={question.content}
-              answers={question.answers}
               viewAnswers={question.viewAnswers}
               tags={question.tags}
               points={question.points}
