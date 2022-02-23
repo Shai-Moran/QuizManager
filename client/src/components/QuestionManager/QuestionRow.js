@@ -13,6 +13,7 @@ const QuestionRow = (props) => {
       <Table.Cell>{props.points}</Table.Cell>
       <TableCell>
         <Button>Edit</Button>
+        <Button>Delete</Button>
       </TableCell>
     </Table.Row>
   );
