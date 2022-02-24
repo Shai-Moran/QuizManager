@@ -16,8 +16,8 @@ function App() {
         <Routes>
           <Route path="new-test" element={<NewTest />} />
           <Route path="update-test" element={<UpdateTest />} />
-          <Route path="update-question" element={<UpdateQuestion />} />
           <Route path="new-question" element={<NewQuestion />} />
+          <Route path="update-question" element={<UpdateQuestion />} />
           <Route path="tests-menu" element={<TestFieldMenu />} />
           <Route path="tests" element={<TestManager />} />
           <Route path="test-added" element={<h1>Test Added!</h1>} />
