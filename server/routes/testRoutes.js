@@ -3,6 +3,7 @@ const router = express.Router();
 const newTestService = require('../services/newTestService');
 const asyncHandler = require('../helpers/asyncHandler');
 const getAllTestsService = require('../services/getAllTestsService');
+const getTestById = require('../services/getTestById');
 
 router.post(
   '/addTest',
@@ -20,6 +21,14 @@ router.post(
   '/getAllByField',
   asyncHandler(async (req, res) => {
     const data = await getAllTestsService.getAllTestsByField(req.body.field);
+    res.send(data);
+  })
+);
+
+router.post(
+  '/getById',
+  asyncHandler(async (req, res) => {
+    const data = await getTestById.getTestById(req.body.id);
     res.send(data);
   })
 );
