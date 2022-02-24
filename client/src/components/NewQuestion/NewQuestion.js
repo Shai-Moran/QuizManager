@@ -30,6 +30,7 @@ const NewQuestion = () => {
 
   const newQuestionHandler = () => {
     const id = uuidv4();
+    const date = new Date();
     var answers = [answer1, answer2, answer3, answer4];
     const myTags = tags.split(', ');
 
@@ -60,7 +61,10 @@ const NewQuestion = () => {
         answers: answers,
         viewAnswers: viewAnswers,
         tags: myTags,
-        points: points
+        points: points,
+        lastUpdated: `${date.getDate()}/${
+          date.getMonth() + 1
+        }/${date.getFullYear()}`,
       };
       QuestionService.addQuestion(newQuestion);
       navigation('/question-added');

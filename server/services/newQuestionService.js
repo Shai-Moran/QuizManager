@@ -10,7 +10,8 @@ class NewQuestionService {
            answers: question.answers,
            viewAnswers: question.viewAnswers,
            tags: question.tags,
-           points: question.points
+           points: question.points,
+           lastUpdated: question.lastUpdated
         })
         newQuestion.save()
    } 

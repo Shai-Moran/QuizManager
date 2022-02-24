@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Table } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 import getAllQuestions from '../../services/allQuestionsService';
+import QuestionPagination from '../UpdateQuestion/QuestionPagination'
 import QuestionRow from './QuestionRow';
 
 const QuestionManager = () => {
@@ -41,6 +42,7 @@ const QuestionManager = () => {
           <Table.HeaderCell>View Answers</Table.HeaderCell>
           <Table.HeaderCell>Tags</Table.HeaderCell>
           <Table.HeaderCell>Points</Table.HeaderCell>
+          <Table.HeaderCell>Last Updated</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -54,10 +56,12 @@ const QuestionManager = () => {
               viewAnswers={question.viewAnswers}
               tags={question.tags}
               points={question.points}
+              lastUpdated={question.lastUpdated}
             />
           );
         })}
       </Table.Body>
+      <QuestionPagination></QuestionPagination>
     </Table>
     </div>
   );    
