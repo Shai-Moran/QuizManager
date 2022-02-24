@@ -19,7 +19,6 @@ const NewTest = () => {
   const [successMsg, setSuccessMsg] = useState(() => EditorState.createEmpty());
   const [failMsg, setFailMsg] = useState(() => EditorState.createEmpty());
   const [questions, setQuestions] = useState([]);
-  const [selectedQuestions, setSelectedQuestions] = useState([]);
 
   const [subject, setSubject] = useState('');
   const [passingEditor, setPassingEditor] = useState(() =>

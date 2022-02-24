@@ -60,8 +60,8 @@ const QuestionManager = () => {
             />
           );
         })}
+        <QuestionPagination></QuestionPagination>
       </Table.Body>
-      <QuestionPagination></QuestionPagination>
     </Table>
     </div>
   );    

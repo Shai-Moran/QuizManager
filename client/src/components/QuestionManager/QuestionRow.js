@@ -1,12 +1,14 @@
 import React ,{useState} from 'react';
 import { Button, Table, TableCell } from 'semantic-ui-react';
-import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
+import { useNavigate } from 'react-router-dom';
 
 const QuestionRow = (props) => {
+  const navigation = useNavigate();
 
-/*   const handleClickEditRow = (rowIndex) => {
-    setTableData(prev => prev.map((r, index) => ({...r, isEditing: rowIndex === index})))
-  } */
+  const onUpdateHandler = () => {
+    navigation(`/update-question?id=${props.id}`);
+  };
+
   return (
     <Table.Row>
       <Table.Cell>{props.questionType}</Table.Cell>
@@ -18,7 +20,7 @@ const QuestionRow = (props) => {
       <Table.Cell>{props.points}</Table.Cell>
       <Table.Cell>{props.lastUpdated}</Table.Cell>
       <TableCell>
-        <Button>Edit</Button>
+        <Button onClick={onUpdateHandler}>Edit</Button>
         <Button>Delete</Button>
       </TableCell>
     </Table.Row>

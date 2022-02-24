@@ -3,8 +3,8 @@ const router = express.Router();
 const newQuestionService = require('../services/newQuestionService')
 const asyncHandler = require("../helpers/asyncHandler");
 const getAllQuestionsService = require("../services/getAllQuestionsService");
+const getQuestionById = require('../services/getQuestionById');
 
-// Get questions from json
 router.get(
   "/getAll",
   asyncHandler(async (req, res) => {
@@ -13,7 +13,6 @@ router.get(
   })
 ); 
 
-// Add question to the list in json
 router.post(
   "/addQuestion",
   asyncHandler(async (req, res) => {
@@ -25,5 +24,15 @@ router.post(
     }
   })
 );
+
+router.post(
+  '/getById',
+  asyncHandler(async (req, res) => {
+    const data = await getQuestionById.getQuestionById(req.body.id);
+    res.send(data);
+  })
+);
+
+
 
 module.exports = router;

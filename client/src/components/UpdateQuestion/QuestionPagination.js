@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import TablePagination from '@mui/material/TablePagination';
+import QuestionManager from '../QuestionManager/QuestionManager';
 
 const QuestionPagination = () => {
   const [page, setPage] = useState(0);
@@ -10,7 +11,7 @@ const QuestionPagination = () => {
   };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 50));
+    setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
@@ -21,7 +22,8 @@ const QuestionPagination = () => {
       onPageChange={handleChangePage}
       rowsPerPage={rowsPerPage}
       onRowsPerPageChange={handleChangeRowsPerPage}
-    />
+    />,
+    <QuestionManager></QuestionManager>
   );
 }
 
