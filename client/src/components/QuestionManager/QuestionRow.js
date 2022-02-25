@@ -1,6 +1,13 @@
+import React ,{useState} from 'react';
 import { Button, Table, TableCell } from 'semantic-ui-react';
+import { useNavigate } from 'react-router-dom';
 
 const QuestionRow = (props) => {
+  const navigation = useNavigate();
+
+  const onUpdateHandler = () => {
+    navigation(`/update-question?id=${props.id}`);
+  };
 
   return (
     <Table.Row>
@@ -11,8 +18,9 @@ const QuestionRow = (props) => {
       <Table.Cell>{props.viewAnswers}</Table.Cell>
       <Table.Cell>{props.tags}</Table.Cell>
       <Table.Cell>{props.points}</Table.Cell>
+      <Table.Cell>{props.lastUpdated}</Table.Cell>
       <TableCell>
-        <Button>Edit</Button>
+        <Button onClick={onUpdateHandler}>Edit</Button>
         <Button>Delete</Button>
       </TableCell>
     </Table.Row>

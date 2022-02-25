@@ -7,6 +7,7 @@ import TestManager from './components/TestManager/TestManager';
 import QuestionManager from './components/QuestionManager/QuestionManager';
 import TestFieldMenu from './components/TestManager/TestFieldMenu';
 import UpdateTest from './components/UpdateTest/UpdateTest';
+import UpdateQuestion from './components/UpdateQuestion/UpdateQuestion';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="new-test" element={<NewTest />} />
           <Route path="update-test" element={<UpdateTest />} />
           <Route path="new-question" element={<NewQuestion />} />
+          <Route path="update-question" element={<UpdateQuestion />} />
           <Route path="tests-menu" element={<TestFieldMenu />} />
           <Route path="tests" element={<TestManager />} />
           <Route path="test-added" element={<h1>Test Added!</h1>} />

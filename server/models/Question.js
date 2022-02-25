@@ -14,6 +14,10 @@ const QuestionSchema = {
     type: String,
     required: false
   },
+  lastUpdated: {
+    type: String,
+    required: true
+  },
   answers: {
     type: Array,
     required: true
