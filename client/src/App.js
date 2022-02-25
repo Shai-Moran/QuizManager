@@ -22,7 +22,7 @@ function App() {
           <Route path="tests" element={<TestManager />} />
           <Route path="test-added" element={<h1>Test Added!</h1>} />
           <Route path="questions" element={<QuestionManager />} />
-          <Route path="question-added" element={<h1>Question Added!</h1>} />
+          <Route path="question-added" element={<h1>Question Added!</h1>}/>
         </Routes>
       </BrowserRouter>
     </div>

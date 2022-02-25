@@ -24,7 +24,7 @@ const QuestionRow = (props) => {
         <Button>Delete</Button>
       </TableCell>
     </Table.Row>
-  );
-};
+    );
+  }
 
 export default QuestionRow;

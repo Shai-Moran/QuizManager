@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Container } from 'semantic-ui-react';
 import { v4 as uuidv4 } from 'uuid';
 import getQuestionById from '../../services/getQuestionById';
-import QuestionService from '../../services/questionService';
+import newQuestionService from '../../services/newQuestionService';
 import UpdateQuestionForm from './UpdateQuestionForm';
 
 const UpdateQuestion = () => {
@@ -31,8 +31,8 @@ const UpdateQuestion = () => {
 
     useEffect(async () => {
         const urlParams = new URLSearchParams(window.location.search);
-        const idParam = urlParams.get('id');
-        const question = await getQuestionById.getQuestionById(idParam);
+        const id = urlParams.get('id');
+        const question = await getQuestionById.getQuestionById(id);
         let data = question.data[0];
         updateState(data);
       }, []);
@@ -54,7 +54,7 @@ const UpdateQuestion = () => {
     const date = new Date();
     const id = uuidv4();
     var answers = [answer1, answer2, answer3, answer4];
-    const myTags = tags.split(', ');
+    const myTags = typeof tags === 'string' ? tags.split(', '): "";
 
     if (questionType === '') {
         setQuestionTypeError(true);
@@ -88,7 +88,7 @@ const UpdateQuestion = () => {
             date.getMonth() + 1
           }/${date.getFullYear()}`,
         };
-        QuestionService.addQuestion(newQuestion);
+        newQuestionService.addQuestion(newQuestion);
         navigation('/question-added');
       }
     };
@@ -110,7 +110,10 @@ const UpdateQuestion = () => {
         answer1={answer1}
         answer2={answer2}
         answer3={answer3}
-        answer4={answer4}
+        answer4={answer4} 
+        points={points}
+        questionType={questionType}
+        content={content}
         tags={tags}
         title={title}
         viewAnswers={viewAnswers}

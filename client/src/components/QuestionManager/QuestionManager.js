@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Table } from 'semantic-ui-react';
 import getAllQuestions from '../../services/allQuestionsService';
 import QuestionPagination from '../UpdateQuestion/QuestionPagination'
@@ -9,7 +9,9 @@ const QuestionManager = () => {
   const [tags, setTags] = useState('');
 
   useEffect(async () => {
-   const allQuestions = await getAllQuestions.getAllQuestions()
+   const urlParams = new URLSearchParams(window.location.search);
+   const id = urlParams.get('id');
+   const allQuestions = await getAllQuestions.getAllQuestions(id)
    allQuestions.data.map((question) => {
      setQuestions((prevState) => [...prevState, question])
    })
