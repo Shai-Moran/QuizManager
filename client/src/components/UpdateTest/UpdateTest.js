@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container } from 'semantic-ui-react';
-import { EditorState, ContentState } from 'draft-js';
+import { EditorState, converToRaw } from 'draft-js';
 import getTestById from '../../services/getTestById';
 import { v4 as uuidv4 } from 'uuid';
 import QuestionSelector from '../NewTest/QuestionSelector/QuestionSelector';
@@ -46,13 +46,15 @@ const UpdateTest = () => {
   }, []);
 
   const updateState = (data) => {
-    console.log(data.name);
     setField(data.field);
     setLenguage(data.language);
     setPassingGrade(data.passingGrade);
     setName(data.name);
     setEmail(data.createrEmail);
-    // setHeader(data.opening);
+    setQuestions(data.questions);
+    setHeader(
+      EditorState.createWithContent(converToRaw(JSON.parse(data.opening)))
+    );
     // setSuccessMsg(EditorState.createWithContent(data.passingText));
     // setFailMsg(EditorState.createWithContent(data.failText));
     // setSubject;
@@ -109,7 +111,7 @@ const UpdateTest = () => {
     <Container className="new-test-container">
       <Button
         onClick={() => {
-          console.log(name);
+          console.log(questions);
         }}
       >
         click

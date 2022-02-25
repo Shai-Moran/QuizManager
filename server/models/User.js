@@ -6,7 +6,11 @@ const UserSchema = {
     type: String,
     required: true
   },
-  username: {
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
     type: String,
     required: true
   },
@@ -14,9 +18,13 @@ const UserSchema = {
     type: String,
     required: true
   },
-  passward: {
+  userType: {
     type: String,
     required: true
+  },
+  password: {
+    type: String,
+    required: false
   }
 };
 
