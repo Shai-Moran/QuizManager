@@ -35,7 +35,7 @@ const QuestionSelectorRow = (props) => {
       });
     }
   };
-
+  
   return (
     <Table.Row>
       <Table.Cell positive={isSelected} onClick={onClickHandler}>
@@ -60,7 +60,7 @@ const QuestionSelectorRow = (props) => {
             </Grid.Row>
             <Grid.Row>
               <Container>
-                <Header as="h3">{props.contant}</Header>
+                <Header as="h3">{props.content}</Header>
               </Container>
             </Grid.Row>
             <Grid.Row>

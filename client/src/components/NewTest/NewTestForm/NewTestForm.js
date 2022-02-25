@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Header, Form } from 'semantic-ui-react';
+import { Header, Form, Radio, Container } from 'semantic-ui-react';
 import TextEditor from '../../UI/TextEditor/TextEditor';
 import getFieldsService from '../../../services/getFieldsService';
 
@@ -32,6 +32,16 @@ const NewTestForm = (props) => {
           onChange={(e) => props.setField(e.target.innerText)}
         />
       </Header>
+      <Header textAlign="left">
+        Answer Review:
+        <Container>
+          <Radio
+            toggle
+            onChange={() => props.setAnswerReview(!props.answerReview)}
+          />
+        </Container>
+      </Header>
+      <Radio toggle />
       <Header textAlign="left">
         Language:
         <Form.Select

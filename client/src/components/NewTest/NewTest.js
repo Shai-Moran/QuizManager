@@ -11,6 +11,7 @@ import QuestionSelector from './QuestionSelector/QuestionSelector';
 const NewTest = () => {
   const navigation = useNavigate();
   const [field, setField] = useState('');
+  const [answerReview, setAnswerReview] = useState(false);
   const [language, setLenguage] = useState('');
   const [passingGrade, setPassingGrade] = useState(0);
   const [name, setName] = useState('');
@@ -64,7 +65,7 @@ const NewTest = () => {
         questions: questions,
         createrEmail: email,
         passingGrade: passingGrade,
-        answerReview: false,
+        answerReview: answerReview,
         testUrl: `http://localhost:3000/api/startTest?id=${id}`,
         certificateUtl: 'abc',
         passingText: successMsg,
@@ -87,6 +88,8 @@ const NewTest = () => {
       <h1>New Test</h1>
       <NewTestForm
         setField={setField}
+        answerReview={answerReview}
+        setAnswerReview={setAnswerReview}
         setLenguage={setLenguage}
         setPassingGrade={setPassingGrade}
         setName={setName}
