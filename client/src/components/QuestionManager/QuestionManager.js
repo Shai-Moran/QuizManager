@@ -34,7 +34,7 @@ const QuestionManager = () => {
     <div>
       <h1>Question Manager</h1>
       search by tag: <input type='text' onChange={e => setTags(e.target.value)}/>
-<Table celled selectable>
+      <Table celled selectable>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>Question Type</Table.HeaderCell>

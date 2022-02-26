@@ -27,17 +27,13 @@ const TestUserForm = (props) => {
         email: email,
         phoneNumber: phoneNumber,
         userType: 'student'
-<<<<<<< HEAD
       };
       newUserService.addUser(newUser);
       props.setTestStage(1);
       props.setUserId(newUser.id);
-=======
-      };     
->>>>>>> 773f41b95a5b1c2282353a0c0f151fcaf731cde0
-    }
-  };
-
+      };  
+    }   
+  
   return (
     <Form>
       <Header as="h1">Welcome to QuizManager!</Header>
