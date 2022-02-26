@@ -8,6 +8,7 @@ import QuestionManager from './components/QuestionManager/QuestionManager';
 import TestFieldMenu from './components/TestManager/TestFieldMenu';
 import UpdateTest from './components/UpdateTest/UpdateTest';
 import UpdateQuestion from './components/UpdateQuestion/UpdateQuestion';
+import Test from './components/Test/Test';
 
 function App() {
   return (
@@ -22,7 +23,12 @@ function App() {
           <Route path="tests" element={<TestManager />} />
           <Route path="test-added" element={<h1>Test Added!</h1>} />
           <Route path="questions" element={<QuestionManager />} />
+<<<<<<< HEAD
+          <Route path="question-added" element={<h1>Question Added!</h1>} />
+          <Route path="start-test" element={<Test />} />
+=======
           <Route path="question-added" element={<h1>Question Added!</h1>}/>
+>>>>>>> 773f41b95a5b1c2282353a0c0f151fcaf731cde0
         </Routes>
       </BrowserRouter>
     </div>

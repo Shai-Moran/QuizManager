@@ -1,30 +1,40 @@
 import React, { useState } from 'react';
 import { Button, Form, Header } from 'semantic-ui-react';
+import newUserService from '../../../services/newUserService';
+import { v4 as uuid4 } from 'uuid';
 
-const TestUserForm = () => {
+const TestUserForm = (props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [id, setId] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
-  const [idError, setIdError] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
 
   const submitHandler = () => {
     if (firstName === '') setFirstNameError(true);
     else if (lastName === '') setLastNameError(true);
     else if (email === '') setEmailError(true);
-    else if (id === '') setIdError(true);
+    else if (phoneNumber === '') setPhoneNumberError(true);
     else {
       const newUser = {
-        id: id,
+        id: uuid4(),
         firstName: firstName,
         lastName: lastName,
         email: email,
+        phoneNumber: phoneNumber,
         userType: 'student'
+<<<<<<< HEAD
+      };
+      newUserService.addUser(newUser);
+      props.setTestStage(1);
+      props.setUserId(newUser.id);
+=======
       };     
+>>>>>>> 773f41b95a5b1c2282353a0c0f151fcaf731cde0
     }
   };
 
@@ -54,10 +64,10 @@ const TestUserForm = () => {
         }}
       />
       <Form.Input
-        error={idError}
-        label="Id:"
+        error={phoneNumberError}
+        label="Phone Number:"
         onChange={(e) => {
-          setId(e.target.value);
+          setPhoneNumber(e.target.value);
         }}
       />
       <Button color="green" onClick={submitHandler}>

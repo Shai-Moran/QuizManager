@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import NewTestForm from './NewTestForm/NewTestForm';
 import { Button, Container } from 'semantic-ui-react';
 import EmailForm from './EmailForm/EmailForm';
-import { EditorState } from 'draft-js';
+import { EditorState, convertToRaw } from 'draft-js';
 import newTestService from '../../services/newTestService';
 import { v4 as uuidv4 } from 'uuid';
 import QuestionSelector from './QuestionSelector/QuestionSelector';
@@ -61,19 +61,25 @@ const NewTest = () => {
           date.getMonth() + 1
         }/${date.getFullYear()}`,
         language: language,
-        opening: header,
+        opening: JSON.stringify(convertToRaw(header.getCurrentContent())),
         questions: questions,
         createrEmail: email,
         passingGrade: passingGrade,
         answerReview: answerReview,
-        testUrl: `http://localhost:3000/api/startTest?id=${id}`,
+        testUrl: `http://localhost:3000/start-test?id=${id}`,
         certificateUtl: 'abc',
-        passingText: successMsg,
-        failText: failMsg,
+        passingText: JSON.stringify(
+          convertToRaw(successMsg.getCurrentContent())
+        ),
+        failText: JSON.stringify(convertToRaw(failMsg.getCurrentContent())),
         emailId: uuidv4(),
         subject: subject,
-        successBody: passingEditor,
-        failBody: failingEditor
+        successBody: JSON.stringify(
+          convertToRaw(passingEditor.getCurrentContent())
+        ),
+        failBody: JSON.stringify(
+          convertToRaw(failingEditor.getCurrentContent())
+        )
       };
 
       newTestService.addTest(newTest);

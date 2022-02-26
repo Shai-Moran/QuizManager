@@ -41,7 +41,6 @@ const NewTestForm = (props) => {
           />
         </Container>
       </Header>
-      <Radio toggle />
       <Header textAlign="left">
         Language:
         <Form.Select

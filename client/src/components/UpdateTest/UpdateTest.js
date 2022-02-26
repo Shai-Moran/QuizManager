@@ -92,7 +92,7 @@ const UpdateTest = () => {
         createrEmail: email,
         passingGrade: passingGrade,
         answerReview: false,
-        testUrl: `http://localhost:3000/api/startTest?id=${id}`,
+        testUrl: `http://localhost:3000/start-test?id=${id}`,
         certificateUtl: 'abc',
         passingText: successMsg,
         failText: failMsg,

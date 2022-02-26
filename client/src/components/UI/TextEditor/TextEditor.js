@@ -17,7 +17,7 @@ const TextEditor = (props) => {
   );
 };
 
-// to get show the content of the editor state we need to conver it to convert the raw content
+// to show the content of the editor state we need to  convert the raw content
 // to a new editor state and show it on a draftjs readonly editor like:
 // import { Editor } from 'draftjs';
 
