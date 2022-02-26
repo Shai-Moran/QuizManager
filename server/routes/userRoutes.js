@@ -7,7 +7,7 @@ router.post(
   '/addUser',
   asyncHandler(async (req, res) => {
     try {
-      await newTestService.addTest(req.body);
+      await newUserService.addUser(req.body);
       res.status(200).send({ msg: 'User Added Successfully!' });
     } catch {
       res.status(400).send({ msg: 'User Failed to Add' });

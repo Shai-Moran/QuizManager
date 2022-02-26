@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class NewUserService {
-  addTest(user) {
+  addUser(user) {
     console.log(user);
     axios.post('http://localhost:4000/api/users/addUser', user);
   }
