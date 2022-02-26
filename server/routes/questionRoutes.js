@@ -4,6 +4,7 @@ const newQuestionService = require('../services/newQuestionService')
 const asyncHandler = require("../helpers/asyncHandler");
 const getAllQuestionsService = require("../services/getAllQuestionsService");
 const getQuestionById = require('../services/getQuestionById');
+const deleteQuestionById = require('../services/deleteQuestionById')
 
 router.get(
   "/getAll",
@@ -33,6 +34,13 @@ router.post(
   })
 );
 
+router.delete(
+  '/deleteQuestion',
+  asyncHandler(async (req, res) => {
+    const data = await deleteQuestionById.deleteQuestionById(req.body.id);
+    res.send(data);
+  })
+);
 
 
 module.exports = router;
