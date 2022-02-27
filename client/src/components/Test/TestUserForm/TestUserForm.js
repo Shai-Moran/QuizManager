@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Form, Header } from 'semantic-ui-react';
+import { Button, Form, Header, Segment } from 'semantic-ui-react';
 import newUserService from '../../../services/newUserService';
 import { v4 as uuid4 } from 'uuid';
+import getUserById from '../../../services/getUserById';
 
 const TestUserForm = (props) => {
   const [firstName, setFirstName] = useState('');
@@ -29,47 +30,49 @@ const TestUserForm = (props) => {
         userType: 'student'
       };
       newUserService.addUser(newUser);
-      props.setTestStage(1);
       props.setUserId(newUser.id);
-      };  
-    }   
-  
+      props.setTestStage(1);
+    }
+  };
+
   return (
-    <Form>
-      <Header as="h1">Welcome to QuizManager!</Header>
-      <Header as="h3">Please enter your details:</Header>
-      <Form.Input
-        error={firstNameError}
-        label="First Name:"
-        onChange={(e) => {
-          setFirstName(e.target.value);
-        }}
-      />
-      <Form.Input
-        error={lastNameError}
-        label="Last Name:"
-        onChange={(e) => {
-          setLastName(e.target.value);
-        }}
-      />
-      <Form.Input
-        error={emailError}
-        label="Email:"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />
-      <Form.Input
-        error={phoneNumberError}
-        label="Phone Number:"
-        onChange={(e) => {
-          setPhoneNumber(e.target.value);
-        }}
-      />
-      <Button color="green" onClick={submitHandler}>
-        Submit
-      </Button>
-    </Form>
+    <Segment>
+      <Form>
+        <Header as="h1">Welcome to QuizManager!</Header>
+        <Header as="h3">Please enter your details:</Header>
+        <Form.Input
+          error={firstNameError}
+          label="First Name:"
+          onChange={(e) => {
+            setFirstName(e.target.value);
+          }}
+        />
+        <Form.Input
+          error={lastNameError}
+          label="Last Name:"
+          onChange={(e) => {
+            setLastName(e.target.value);
+          }}
+        />
+        <Form.Input
+          error={emailError}
+          label="Email:"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+        <Form.Input
+          error={phoneNumberError}
+          label="Phone Number:"
+          onChange={(e) => {
+            setPhoneNumber(e.target.value);
+          }}
+        />
+        <Button color="green" onClick={submitHandler}>
+          Submit
+        </Button>
+      </Form>
+    </Segment>
   );
 };
 

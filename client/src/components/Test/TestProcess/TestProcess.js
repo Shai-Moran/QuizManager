@@ -3,6 +3,7 @@ import { Button, Container, Icon } from 'semantic-ui-react';
 import Question from '../Question/Question';
 import { v4 as uuidv4 } from 'uuid';
 import getQuestionById from '../../../services/getQuestionById';
+import newTestInstanceService from '../../../services/newTestInstanceService';
 
 const TestProcess = (props) => {
   const [questions, setQuestions] = useState([]);
@@ -48,7 +49,7 @@ const TestProcess = (props) => {
       questions: questions,
       grade: currentGrade
     };
-    
+    newTestInstanceService.addTestInstance(newTestInstance);
     props.setTestInstance(newTestInstance);
     props.setTestStage(3);
   };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Header, Radio } from 'semantic-ui-react';
+import { Container, Header, Radio, Segment } from 'semantic-ui-react';
 import getQuestionById from '../../../services/getQuestionById';
 
 const Question = (props) => {
@@ -22,7 +22,7 @@ const Question = (props) => {
     props.setQuestions(items);
   };
   return (
-    <Container>
+    <Segment>
       <Header as="h1">{question.title}</Header>
       <Header as="h3">{question.content}</Header>
       <Container>
@@ -45,7 +45,7 @@ const Question = (props) => {
           <></>
         )}
       </Container>
-    </Container>
+    </Segment>
   );
 };
 
