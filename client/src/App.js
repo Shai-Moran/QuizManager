@@ -9,6 +9,7 @@ import TestFieldMenu from './components/TestManager/TestFieldMenu';
 import UpdateTest from './components/UpdateTest/UpdateTest';
 import UpdateQuestion from './components/UpdateQuestion/UpdateQuestion';
 import Test from './components/Test/Test';
+import Reports from './components/Reports/Reports';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route path="questions" element={<QuestionManager />} />
           <Route path="question-added" element={<h1>Question Added!</h1>} />
           <Route path="start-test" element={<Test />} />
-          <Route path="question-added" element={<h1>Question Added!</h1>}/>
+          <Route path="reports" element={<Reports />}/>
         </Routes>
       </BrowserRouter>
     </div>
