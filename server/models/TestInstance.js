@@ -21,6 +21,10 @@ const TestInstanceSchema = {
   grade: {
     type: Number,
     required: true
+  },
+  date: {
+    type: String,
+    required: true
   }
 };
 

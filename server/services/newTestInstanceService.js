@@ -7,7 +7,8 @@ class NewTestInstanceService {
       testId: testInstance.testId,
       studentId: testInstance.userId,
       questions: testInstance.questions,
-      grade: testInstance.grade
+      grade: testInstance.grade,
+      date: testInstance.date
     });
     newTestInstance.save();
   }
