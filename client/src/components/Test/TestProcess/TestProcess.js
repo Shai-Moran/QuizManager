@@ -47,7 +47,8 @@ const TestProcess = (props) => {
       testId: props.testData.id,
       userId: props.userId,
       questions: questions,
-      grade: currentGrade
+      grade: currentGrade,
+      date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
     };
     newTestInstanceService.addTestInstance(newTestInstance);
     props.setTestInstance(newTestInstance);
