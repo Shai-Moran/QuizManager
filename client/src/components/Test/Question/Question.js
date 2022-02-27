@@ -20,7 +20,6 @@ const Question = (props) => {
     let item = { ...items[props.index], answer: value };
     items[props.index] = item;
     props.setQuestions(items);
-    console.log(props.questions);
   };
   return (
     <Container>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Icon } from 'semantic-ui-react';
 import Question from '../Question/Question';
+import { v4 as uuidv4 } from 'uuid';
+import getQuestionById from '../../../services/getQuestionById';
 
 const TestProcess = (props) => {
   const [questions, setQuestions] = useState([]);
@@ -32,9 +34,22 @@ const TestProcess = (props) => {
     return questionsArray;
   };
 
-  const finishTestHandler = () => {
-    
-  }
+  const finishTestHandler = async () => {
+    let currentGrade = 0;
+    for (let index = 0; index < questions.length; index++) {
+      let question = await getQuestionById.getQuestionById(questions[index].id);
+      currentGrade = currentGrade + question.data[0].points;
+    }
+    let newTestInstance = {
+      id: uuidv4(),
+      testId: props.testData.id,
+      userId: props.userId,
+      questions: questions,
+      grade: currentGrade
+    };
+    props.setTestInstance(newTestInstance);
+    props.setTestStage(3);
+  };
   return (
     <div>
       {questions.map((q) => {
@@ -55,7 +70,7 @@ const TestProcess = (props) => {
       <Container>
         {index === questions.length - 1 ? (
           <Container>
-            <Button onClick={(finishTestHandler)} color="green">
+            <Button onClick={finishTestHandler} color="green">
               Finish Test
             </Button>
             <Button onClick={() => setIndex(index - 1)}>

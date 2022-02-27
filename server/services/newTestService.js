@@ -12,6 +12,7 @@ class NewTestService {
       opening: test.opening,
       questions: test.questions,
       createrEmail: test.createrEmail,
+      passingGrade: passingGrade,
       emailId: test.emailId,
       answerReview: test.answerReview,
       testUrl: test.testUrl,

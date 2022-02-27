@@ -38,13 +38,17 @@ const TestSchema = {
     type: String,
     required: true
   },
+  passingGrade: {
+    type: Number,
+    required: true
+  },
   answerReview: {
     type: Boolean,
     required: true
   },
   testUrl: {
-      type: String,
-      required: true
+    type: String,
+    required: true
   },
   certificateUtl: {
     type: String,

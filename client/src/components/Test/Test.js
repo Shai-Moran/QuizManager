@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container, Icon } from 'semantic-ui-react';
+import { Button, Container, Header, Icon } from 'semantic-ui-react';
 import TestUserForm from './TestUserForm/TestUserForm';
 import getTestById from '../../services/getTestById';
 import { Editor, EditorState, convertFromRaw } from 'draft-js';
 import TestProcess from './TestProcess/TestProcess';
+import TestReview from './TestReview/TestReview';
 
 const Test = () => {
   // stages work like that, 0: sigh up stage,
@@ -13,6 +14,7 @@ const Test = () => {
   const [userId, setUserId] = useState('');
   const [testData, setTestData] = useState({});
   const [opening, setOpening] = useState(() => EditorState.createEmpty());
+  const [testInstance, setTestInstance] = useState({});
 
   useEffect(async () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -39,9 +41,14 @@ const Test = () => {
           </Button>
         </Container>
       ) : testStage === 2 ? (
-        <TestProcess testData={testData} setTestStage={setTestStage} />
+        <TestProcess
+          testData={testData}
+          setTestStage={setTestStage}
+          userId={userId}
+          setTestInstance={setTestInstance}
+        />
       ) : (
-        <></>
+        <TestReview testData={testData} testInstance={testInstance} />
       )}
     </div>
   );
