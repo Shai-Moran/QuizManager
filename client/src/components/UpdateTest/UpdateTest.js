@@ -98,13 +98,6 @@ const UpdateTest = () => {
 
   return (
     <Container className="new-test-container">
-      <Button
-        onClick={() => {
-          console.log(questions);
-        }}
-      >
-        click
-      </Button>
       <h1>New Test</h1>
       <UpdateTestForm
         field={field}
