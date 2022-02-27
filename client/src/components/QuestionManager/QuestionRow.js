@@ -1,4 +1,4 @@
-import React ,{useState} from 'react';
+import React ,{useEffect, useState} from 'react';
 import { Button, Table, TableCell } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,7 +14,9 @@ const QuestionRow = (props) => {
       <Table.Cell>{props.questionType}</Table.Cell>
       <Table.Cell>{props.title}</Table.Cell>
       <Table.Cell>{props.content}</Table.Cell>
-      <Table.Cell>{props.answers}</Table.Cell>
+      <Table.Cell>{props.answers.map((a) => {
+        return a.content + " "
+      })}</Table.Cell>
       <Table.Cell>{props.viewAnswers}</Table.Cell>
       <Table.Cell>{props.tags}</Table.Cell>
       <Table.Cell>{props.points}</Table.Cell>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Button } from 'semantic-ui-react';
 import getAllQuestions from '../../services/allQuestionsService';
 import QuestionPagination from '../UpdateQuestion/QuestionPagination'
 import QuestionRow from './QuestionRow';
@@ -9,9 +9,7 @@ const QuestionManager = () => {
   const [tags, setTags] = useState('');
 
   useEffect(async () => {
-   const urlParams = new URLSearchParams(window.location.search);
-   const id = urlParams.get('id');
-   const allQuestions = await getAllQuestions.getAllQuestions(id)
+   const allQuestions = await getAllQuestions.getAllQuestions()
    allQuestions.data.map((question) => {
      setQuestions((prevState) => [...prevState, question])
    })
@@ -55,7 +53,7 @@ const QuestionManager = () => {
               questionType={question.questionType}
               title={question.title}
               content={question.content}
-              //answers={question.answers}
+              answers={question.answers}
               viewAnswers={question.viewAnswers}
               tags={question.tags}
               points={question.points}
@@ -64,6 +62,7 @@ const QuestionManager = () => {
           );
         })}
         <QuestionPagination></QuestionPagination>
+        <Button onClick={() => console.log(questions)}>Click</Button>
       </Table.Body>
     </Table>
     </div>
