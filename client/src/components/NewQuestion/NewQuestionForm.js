@@ -56,7 +56,8 @@ const NewQuestionForm = (props) => {
         />
       </Header>
       <Header textAlign="left">
-        <p>*In tags you have to write a word and at the end ',' click on the space and write the next word </p>
+        <p>You can write multiple tags by dividing with a "," and the space</p>
+        <p>For example: react, javascript, node</p>
         Tags:
         <Form.Input
           error={props.tagsError}

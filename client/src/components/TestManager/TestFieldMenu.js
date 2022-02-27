@@ -29,7 +29,6 @@ const TestFieldMenu = () => {
         options={fields}
         selection
         placeholder="Select a Field"
-        options={fields}
         onChange={onSelectFieldHandler}
       ></Select>
       <Button

@@ -3,14 +3,14 @@ import NewTest from './components/NewTest/NewTest';
 import NewQuestion from './components/NewQuestion/NewQuestion';
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
-import { Header, Menu } from 'semantic-ui-react';
+import { Container, Header, Menu } from 'semantic-ui-react';
 import TestManager from './components/TestManager/TestManager';
 import QuestionManager from './components/QuestionManager/QuestionManager';
 import TestFieldMenu from './components/TestManager/TestFieldMenu';
 import UpdateTest from './components/UpdateTest/UpdateTest';
 import UpdateQuestion from './components/UpdateQuestion/UpdateQuestion';
 import Test from './components/Test/Test';
-import ReportsByTests from './components/Reports/ReportsByTests';
+import ReportsByTestsFields from './components/Reports/ReportsByTestsFields';
 import ReportsByStudents from './components/Reports/ReportsByStudents';
 import { useState } from 'react';
 
@@ -41,6 +41,19 @@ function App() {
       </Menu>
       <BrowserRouter>
         <Routes>
+          <Route
+            path=""
+            element={
+              <Container textAlign="left">
+                <Header as="h1" color="blue">
+                  Welcome to the QuizManager Website!
+                </Header>
+                <Header as="h2">
+                  Please feel free to create you very own test and quesions
+                </Header>
+              </Container>
+            }
+          />
           <Route path="new-test" element={<NewTest />} />
           <Route path="update-test" element={<UpdateTest />} />
           <Route path="new-question" element={<NewQuestion />} />
@@ -50,7 +63,7 @@ function App() {
           <Route path="questions" element={<QuestionManager />} />
           <Route path="question-added" element={<h1>Question Added!</h1>} />
           <Route path="start-test" element={<Test />} />
-          <Route path="reports-by-tests" element={<ReportsByTests/>}/>
+          <Route path="reports-by-tests" element={<ReportsByTestsFields/>}/>
           <Route path="reports-by-students" element={<ReportsByStudents/>}/>
         </Routes>
       </BrowserRouter>
