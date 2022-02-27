@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Header, Form } from 'semantic-ui-react';
+import { Header, Form, Segment } from 'semantic-ui-react';
 import TextEditor from '../../UI/TextEditor/TextEditor';
 import getFieldsService from '../../../services/getFieldsService';
 
@@ -75,31 +75,37 @@ const UpdateTestForm = (props) => {
         />
       </Header>
       <div className="wysiwyg-input">
-        <Header textAlign="left" as="h2">
-          Header
-        </Header>
-        <TextEditor
-          editorState={props.header}
-          setEditorState={props.setHeader}
-        />
+        <Segment>
+          <Header textAlign="left" as="h2">
+            Header
+          </Header>
+          <TextEditor
+            editorState={props.header}
+            setEditorState={props.setHeader}
+          />
+        </Segment>
       </div>
       <div className="wysiwyg-input">
-        <Header textAlign="left" as="h2">
-          Message to show on success:
-        </Header>
-        <TextEditor
-          editorState={props.successMsg}
-          setEditorState={props.setSuccessMsg}
-        />
+        <Segment>
+          <Header textAlign="left" as="h2">
+            Message to show on success:
+          </Header>
+          <TextEditor
+            editorState={props.successMsg}
+            setEditorState={props.setSuccessMsg}
+          />
+        </Segment>
       </div>
       <div className="wysiwyg-input">
-        <Header textAlign="left" as="h2">
-          Message to show on failure:
-        </Header>
-        <TextEditor
-          editorState={props.failMsg}
-          setEditorState={props.setFailMsg}
-        />
+        <Segment>
+          <Header textAlign="left" as="h2">
+            Message to show on failure:
+          </Header>
+          <TextEditor
+            editorState={props.failMsg}
+            setEditorState={props.setFailMsg}
+          />
+        </Segment>
       </div>
     </Form>
   );

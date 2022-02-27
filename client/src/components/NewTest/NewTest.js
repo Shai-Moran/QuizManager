@@ -84,7 +84,7 @@ const NewTest = () => {
 
       console.log(newTest);
       newTestService.addTest(newTest);
-      navigation('/test-added');
+      navigation('/tests-menu');
     }
   };
 
