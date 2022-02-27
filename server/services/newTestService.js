@@ -3,6 +3,7 @@ let Test = require('../models/Test');
 
 class NewTestService {
   addTest(test) {
+
     const newTest = new Test({
       id: test.testId,
       field: test.field,
@@ -12,7 +13,7 @@ class NewTestService {
       opening: test.opening,
       questions: test.questions,
       createrEmail: test.createrEmail,
-      passingGrade: passingGrade,
+      passingGrade: Number.parseInt(test.passingGrade),
       emailId: test.emailId,
       answerReview: test.answerReview,
       testUrl: test.testUrl,

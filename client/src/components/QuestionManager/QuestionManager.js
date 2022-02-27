@@ -62,7 +62,6 @@ const QuestionManager = () => {
           );
         })}
         <QuestionPagination></QuestionPagination>
-        <Button onClick={() => console.log(questions)}>Click</Button>
       </Table.Body>
     </Table>
     </div>
