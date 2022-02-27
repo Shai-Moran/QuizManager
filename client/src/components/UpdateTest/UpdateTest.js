@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container } from 'semantic-ui-react';
-import { EditorState, converToRaw } from 'draft-js';
+import { EditorState, convertFromRaw } from 'draft-js';
 import getTestById from '../../services/getTestById';
 import { v4 as uuidv4 } from 'uuid';
 import QuestionSelector from '../NewTest/QuestionSelector/QuestionSelector';
 import newTestService from '../../services/newTestService';
 import UpdateEmailForm from './UpdateEmail/UpdateEmailForm';
 import UpdateTestForm from './UpdateTestForm.js/UpdateTestForm';
+import updateTestService from '../../services/updateTestService';
 
 const UpdateTest = () => {
+  const [data, setData] = useState({});
+
   const navigation = useNavigate();
   const [field, setField] = useState('');
   const [language, setLenguage] = useState('');
@@ -21,50 +24,42 @@ const UpdateTest = () => {
   const [failMsg, setFailMsg] = useState(() => EditorState.createEmpty());
   const [questions, setQuestions] = useState([]);
 
-  const [subject, setSubject] = useState('');
-  const [passingEditor, setPassingEditor] = useState(() =>
-    EditorState.createEmpty()
-  );
-  const [failingEditor, setFailingEditor] = useState(() =>
-    EditorState.createEmpty()
-  );
-
   const [fieldError, setFieldError] = useState(false);
   const [languageError, setLanguageError] = useState(false);
   const [passingGradeError, setPassingGradeError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
-  const [subjectError, setSubjectError] = useState(false);
 
   useEffect(async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const idParam = urlParams.get('id');
     const test = await getTestById.getTestById(idParam);
     let data = test.data[0];
-    console.log(data);
+    setData(data);
     updateState(data);
   }, []);
 
-  const updateState = (data) => {
-    setField(data.field);
-    setLenguage(data.language);
-    setPassingGrade(data.passingGrade);
-    setName(data.name);
-    setEmail(data.createrEmail);
-    setQuestions(data.questions);
-    setHeader(
-      EditorState.createWithContent(converToRaw(JSON.parse(data.opening)))
-    );
-    // setSuccessMsg(EditorState.createWithContent(data.passingText));
-    // setFailMsg(EditorState.createWithContent(data.failText));
-    // setSubject;
-    // setPassingEditor;
-    // setFailingEditor;
+  const convertion = (data, setEditorState) => {
+    const contentState = convertFromRaw(JSON.parse(data));
+    const editorState = EditorState.createWithContent(contentState);
+    setEditorState(editorState);
+  };
+
+  const updateState = (testData, emailData) => {
+    setField(testData.field);
+    setLenguage(testData.language);
+    setPassingGrade(testData.passingGrade);
+    setName(testData.name);
+    setEmail(testData.createrEmail);
+    setQuestions(testData.questions);
+    convertion(testData.opening, setHeader);
+    convertion(testData.passingText, setSuccessMsg);
+    convertion(testData.failText, setFailMsg);
   };
 
   const newTestHandler = () => {
     const date = new Date();
-    const id = uuidv4();
+    const id = data.id;
 
     if (field === '') {
       setFieldError(true);
@@ -76,8 +71,6 @@ const UpdateTest = () => {
       setNameError(true);
     } else if (email === '') {
       setEmailError(true);
-    } else if (subject === '') {
-      setSubjectError(true);
     } else {
       const newTest = {
         testId: id,
@@ -95,14 +88,10 @@ const UpdateTest = () => {
         testUrl: `http://localhost:3000/start-test?id=${id}`,
         certificateUtl: 'abc',
         passingText: successMsg,
-        failText: failMsg,
-        emailId: uuidv4(),
-        subject: subject,
-        successBody: passingEditor,
-        failBody: failingEditor
+        failText: failMsg
       };
-
-      newTestService.addTest(newTest);
+      updateTestService.updateTest(newTest);
+      //newTestService.addTest(newTest);
       navigation('/test-added');
     }
   };
@@ -141,14 +130,6 @@ const UpdateTest = () => {
         emailError={emailError}
       />
       <QuestionSelector questions={questions} setQuestions={setQuestions} />
-      <UpdateEmailForm
-        setSubject={setSubject}
-        passingEditor={passingEditor}
-        setPassingEditor={setPassingEditor}
-        failingEditor={failingEditor}
-        setFailingEditor={setFailingEditor}
-        subjectError={subjectError}
-      />
       <Container textAlign="right">
         <Button className="ui green button" onClick={newTestHandler}>
           Create New Test
