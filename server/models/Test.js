@@ -34,12 +34,12 @@ const TestSchema = {
     type: String,
     required: true
   },
-  emailId: {
+  passingGrade: {
     type: String,
     required: true
   },
-  passingGrade: {
-    type: Number,
+  emailId: {
+    type: String,
     required: true
   },
   answerReview: {

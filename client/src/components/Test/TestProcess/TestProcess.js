@@ -38,7 +38,8 @@ const TestProcess = (props) => {
     let currentGrade = 0;
     for (let index = 0; index < questions.length; index++) {
       let question = await getQuestionById.getQuestionById(questions[index].id);
-      currentGrade = currentGrade + question.data[0].points;
+      if (question.data[0].answers[questions[index].answer - 1].isTrue)
+        currentGrade = currentGrade + question.data[0].points;
     }
     let newTestInstance = {
       id: uuidv4(),
@@ -47,6 +48,7 @@ const TestProcess = (props) => {
       questions: questions,
       grade: currentGrade
     };
+    
     props.setTestInstance(newTestInstance);
     props.setTestStage(3);
   };

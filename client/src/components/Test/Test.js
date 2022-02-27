@@ -42,13 +42,13 @@ const Test = () => {
         </Container>
       ) : testStage === 2 ? (
         <TestProcess
+          setTestInstance={setTestInstance}
           testData={testData}
           setTestStage={setTestStage}
           userId={userId}
-          setTestInstance={setTestInstance}
         />
       ) : (
-        <TestReview testData={testData} testInstance={testInstance} />
+        <TestReview testInstance={testInstance} testData={testData} />
       )}
     </div>
   );

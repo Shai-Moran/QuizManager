@@ -39,7 +39,7 @@ const NewTest = () => {
   const newTestHandler = () => {
     const date = new Date();
     const id = uuidv4();
-
+    console.log(passingGrade);
     if (field === '') {
       setFieldError(true);
     } else if (language === '') {
@@ -82,6 +82,7 @@ const NewTest = () => {
         )
       };
 
+      console.log(newTest);
       newTestService.addTest(newTest);
       navigation('/test-added');
     }
