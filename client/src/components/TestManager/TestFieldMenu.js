@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Header, Select } from 'semantic-ui-react';
+import { Button, Container, Header, Select } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
 import getFieldsService from '../../services/getFieldsService';
 
@@ -32,6 +32,14 @@ const TestFieldMenu = () => {
         options={fields}
         onChange={onSelectFieldHandler}
       ></Select>
+      <Button
+        onClick={() => {
+          navigation('/new-test');
+        }}
+        color="blue"
+      >
+        Create new test!
+      </Button>
     </Container>
   );
 };

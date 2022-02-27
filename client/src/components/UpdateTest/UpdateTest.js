@@ -92,7 +92,7 @@ const UpdateTest = () => {
       };
       updateTestService.updateTest(newTest);
       //newTestService.addTest(newTest);
-      navigation('/test-added');
+      navigation('/tests-menu');
     }
   };
 
