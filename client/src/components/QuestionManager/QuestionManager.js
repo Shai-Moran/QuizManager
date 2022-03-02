@@ -30,7 +30,7 @@ const QuestionManager = () => {
    } 
   }, [tags])
 
-  const onUpdateHandler = () => {
+  const onAddHandler = () => {
     navigation(`/new-question`);
   };
   
@@ -68,7 +68,7 @@ const QuestionManager = () => {
           );
         })}
         <QuestionPagination></QuestionPagination>
-        <Button color='green' onClick={onUpdateHandler}>Add Question</Button>
+        <Button color='green' onClick={onAddHandler}>Add Question</Button>
       </Table.Body>
     </Table>
     </div>
