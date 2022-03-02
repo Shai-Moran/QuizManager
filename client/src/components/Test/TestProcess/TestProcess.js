@@ -36,6 +36,7 @@ const TestProcess = (props) => {
   };
 
   const finishTestHandler = async () => {
+    const newDate = new Date();
     let currentGrade = 0;
     for (let index = 0; index < questions.length; index++) {
       let question = await getQuestionById.getQuestionById(questions[index].id);
@@ -48,7 +49,7 @@ const TestProcess = (props) => {
       userId: props.userId,
       questions: questions,
       grade: currentGrade,
-      date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+      date: `${newDate.getDate()}/${newDate.getMonth() + 1}/${newDate.getFullYear()}`
     };
     newTestInstanceService.addTestInstance(newTestInstance);
     props.setTestInstance(newTestInstance);
