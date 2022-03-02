@@ -63,7 +63,7 @@ const NewQuestion = () => {
         tags: myTags,
         points: points,
         lastUpdated: `${date.getDate()}/${
-          date.getMonth() + 1
+          date.getMonth()
         }/${date.getFullYear()}`,
       };
       newQuestionService.addQuestion(newQuestion);
