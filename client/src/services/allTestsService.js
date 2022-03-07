@@ -1,8 +1,9 @@
 import axios from 'axios';
+import env from '../environments/environment';
 
 class AllTestsService {
   async getAllTests(field) {
-    const data = axios.post('http://localhost:4000/api/tests/getAllByField', {
+    const data = axios.post(`${env.serverUrl}/api/tests/getAllByField`, {
       field: field
     });
     return data;

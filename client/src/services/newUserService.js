@@ -1,9 +1,10 @@
 import axios from 'axios';
+import env from '../environments/environment';
 
 class NewUserService {
   addUser(user) {
     console.log(user);
-    axios.post('http://localhost:4000/api/users/addUser', user);
+    axios.post(`${env.serverUrl}/api/users/addUser`, user);
   }
 }
 

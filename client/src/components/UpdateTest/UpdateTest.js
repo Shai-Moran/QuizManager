@@ -9,6 +9,7 @@ import newTestService from '../../services/newTestService';
 import UpdateEmailForm from './UpdateEmail/UpdateEmailForm';
 import UpdateTestForm from './UpdateTestForm.js/UpdateTestForm';
 import updateTestService from '../../services/updateTestService';
+import Urls from '../../environments/environment';
 
 const UpdateTest = () => {
   const [data, setData] = useState({});
@@ -80,15 +81,17 @@ const UpdateTest = () => {
           date.getMonth() + 1
         }/${date.getFullYear()}`,
         language: language,
-        opening: header,
+        opening: JSON.stringify(convertToRaw(header.getCurrentContent())),
         questions: questions,
         createrEmail: email,
         passingGrade: passingGrade,
         answerReview: false,
-        testUrl: `http://localhost:3000/start-test?id=${id}`,
+        testUrl: `${Urls.clientUrl}/start-test?id=${id}`,
         certificateUtl: 'abc',
-        passingText: successMsg,
-        failText: failMsg
+        passingText: JSON.stringify(
+          convertToRaw(successMsg.getCurrentContent())
+        ),
+        failText: JSON.stringify(convertToRaw(failMsg.getCurrentContent()))
       };
       updateTestService.updateTest(newTest);
       //newTestService.addTest(newTest);
