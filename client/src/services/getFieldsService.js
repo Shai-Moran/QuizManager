@@ -3,8 +3,13 @@ import env from '../environments/environment';
 
 class GetFieldsService {
   async getFields() {
-    const data = await axios.get(`${env.serverUrl}/api/fields/getFields`);
-    return data;
+    try {
+      const data = await axios.get(`${env.serverUrl}/api/fields/getFields`);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return { data: [] };
+    }
   }
 }
 

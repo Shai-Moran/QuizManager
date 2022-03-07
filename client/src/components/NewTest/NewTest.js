@@ -83,9 +83,12 @@ const NewTest = () => {
         )
       };
 
-      console.log(newTest);
-      newTestService.addTest(newTest);
-      navigation('/tests-menu');
+      try {
+        newTestService.addTest(newTest);
+        navigation('/tests-menu');
+      } catch {
+        console.log('New test Service failed');
+      }
     }
   };
 

@@ -3,10 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Container } from 'semantic-ui-react';
 import { EditorState, convertFromRaw } from 'draft-js';
 import getTestById from '../../services/getTestById';
-import { v4 as uuidv4 } from 'uuid';
 import QuestionSelector from '../NewTest/QuestionSelector/QuestionSelector';
-import newTestService from '../../services/newTestService';
-import UpdateEmailForm from './UpdateEmail/UpdateEmailForm';
+import { convertToRaw } from 'draft-js';
 import UpdateTestForm from './UpdateTestForm.js/UpdateTestForm';
 import updateTestService from '../../services/updateTestService';
 import Urls from '../../environments/environment';
@@ -93,9 +91,13 @@ const UpdateTest = () => {
         ),
         failText: JSON.stringify(convertToRaw(failMsg.getCurrentContent()))
       };
-      updateTestService.updateTest(newTest);
-      //newTestService.addTest(newTest);
-      navigation('/tests-menu');
+
+      try {
+        updateTestService.updateTest(newTest);
+        navigation('/tests-menu');
+      } catch {
+        console.log('New test Service failed');
+      }
     }
   };
 
