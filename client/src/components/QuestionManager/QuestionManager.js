@@ -3,10 +3,12 @@ import { Table, Button } from 'semantic-ui-react';
 import getAllQuestions from '../../services/allQuestionsService';
 import QuestionPagination from '../UpdateQuestion/QuestionPagination'
 import QuestionRow from './QuestionRow';
+import { useNavigate } from 'react-router-dom';
 
 const QuestionManager = () => {
   const [questions, setQuestions] = useState([]);
   const [tags, setTags] = useState('');
+  const navigation = useNavigate();
 
   useEffect(async () => {
    const allQuestions = await getAllQuestions.getAllQuestions()
@@ -27,6 +29,10 @@ const QuestionManager = () => {
      })
    } 
   }, [tags])
+
+  const onAddHandler = () => {
+    navigation(`/new-question`);
+  };
   
   return (
     <div>
@@ -62,6 +68,7 @@ const QuestionManager = () => {
           );
         })}
         <QuestionPagination></QuestionPagination>
+        <Button color='green' onClick={onAddHandler}>Add Question</Button>
       </Table.Body>
     </Table>
     </div>
