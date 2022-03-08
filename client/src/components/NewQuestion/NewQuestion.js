@@ -66,8 +66,13 @@ const NewQuestion = () => {
           date.getMonth()
         }/${date.getFullYear()}`,
       };
-      newQuestionService.addQuestion(newQuestion);
-      navigation('/question-added');
+      try{
+        newQuestionService.addQuestion(newQuestion);
+        navigation('/question-added');
+      }
+      catch {
+        console.log('New Question Service failed');
+      }
     }
   };
 

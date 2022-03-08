@@ -3,8 +3,13 @@ import env from '../environments/environment';
 
 const getAllQuestions = {
   async getAllQuestions() {
-    const data = await axios.get(`${env.serverUrl}/api/questions/getAll`);
-    return data;
+    try{
+      const data = await axios.get(`${env.serverUrl}/api/questions/getAll`);
+      return data;
+    }
+    catch (error){
+      console.log(error);
+    }
   }
 };
 
