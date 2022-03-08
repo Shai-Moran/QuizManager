@@ -4,6 +4,7 @@ import getAllQuestions from '../../services/allQuestionsService';
 import QuestionPagination from '../UpdateQuestion/QuestionPagination'
 import QuestionRow from './QuestionRow';
 import { useNavigate } from 'react-router-dom';
+import './QuestionManager.css'
 
 const QuestionManager = () => {
   const [questions, setQuestions] = useState([]);
@@ -38,6 +39,7 @@ const QuestionManager = () => {
     <div>
       <h1>Question Manager</h1>
       search by tag: <input type='text' onChange={e => setTags(e.target.value)}/>
+      <button onClick={onAddHandler}>Add Question</button>
       <Table celled selectable>
       <Table.Header>
         <Table.Row>
@@ -68,7 +70,6 @@ const QuestionManager = () => {
           );
         })}
         <QuestionPagination></QuestionPagination>
-        <Button color='green' onClick={onAddHandler}>Add Question</Button>
       </Table.Body>
     </Table>
     </div>
