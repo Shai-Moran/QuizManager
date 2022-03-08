@@ -16,16 +16,28 @@ const Test = () => {
   const [opening, setOpening] = useState(() => EditorState.createEmpty());
   const [testInstance, setTestInstance] = useState({});
 
+  const [testNotFound, setTestNotFound] = useState(false);
+
   useEffect(async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const idParam = urlParams.get('id');
-    const test = await getTestById.getTestById(idParam);
-    let data = test.data[0];
-    setTestData(data);
-    const contentState = convertFromRaw(JSON.parse(data.opening));
-    const editorState = EditorState.createWithContent(contentState);
-    setOpening(editorState);
+    let data;
+    try {
+      const test = await getTestById.getTestById(idParam);
+      data = test.data[0];
+      setTestData(data);
+      const contentState = convertFromRaw(JSON.parse(data.opening));
+      const editorState = EditorState.createWithContent(contentState);
+      setOpening(editorState);
+    } catch (error) {
+      console.log(error);
+      setTestNotFound(true);
+    }
   }, []);
+
+  if (testNotFound) {
+    return <h1>Test is not available...</h1>;
+  }
 
   return (
     <div>

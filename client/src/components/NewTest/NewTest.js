@@ -7,6 +7,7 @@ import { EditorState, convertToRaw } from 'draft-js';
 import newTestService from '../../services/newTestService';
 import { v4 as uuidv4 } from 'uuid';
 import QuestionSelector from './QuestionSelector/QuestionSelector';
+import Urls from '../../environments/environment';
 
 const NewTest = () => {
   const navigation = useNavigate();
@@ -66,7 +67,7 @@ const NewTest = () => {
         createrEmail: email,
         passingGrade: passingGrade,
         answerReview: answerReview,
-        testUrl: `http://localhost:3000/start-test?id=${id}`,
+        testUrl: `${Urls.clientUrl}/start-test?id=${id}`,
         certificateUtl: 'abc',
         passingText: JSON.stringify(
           convertToRaw(successMsg.getCurrentContent())
@@ -82,9 +83,12 @@ const NewTest = () => {
         )
       };
 
-      console.log(newTest);
-      newTestService.addTest(newTest);
-      navigation('/tests-menu');
+      try {
+        newTestService.addTest(newTest);
+        navigation('/tests-menu');
+      } catch {
+        console.log('New test Service failed');
+      }
     }
   };
 

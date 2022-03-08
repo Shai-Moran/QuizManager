@@ -1,8 +1,9 @@
 import axios from 'axios';
+import env from '../environments/environment';
 
 class UpdateTestService {
   updateTest(test) {
-    axios.post('http://localhost:4000/api/tests/update', test);
+    axios.post(`${env.serverUrl}/api/tests/update`, test);
   }
 }
 

@@ -3,12 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Container } from 'semantic-ui-react';
 import { EditorState, convertFromRaw } from 'draft-js';
 import getTestById from '../../services/getTestById';
-import { v4 as uuidv4 } from 'uuid';
 import QuestionSelector from '../NewTest/QuestionSelector/QuestionSelector';
-import newTestService from '../../services/newTestService';
-import UpdateEmailForm from './UpdateEmail/UpdateEmailForm';
+import { convertToRaw } from 'draft-js';
 import UpdateTestForm from './UpdateTestForm.js/UpdateTestForm';
 import updateTestService from '../../services/updateTestService';
+import Urls from '../../environments/environment';
 
 const UpdateTest = () => {
   const [data, setData] = useState({});
@@ -80,19 +79,25 @@ const UpdateTest = () => {
           date.getMonth() + 1
         }/${date.getFullYear()}`,
         language: language,
-        opening: header,
+        opening: JSON.stringify(convertToRaw(header.getCurrentContent())),
         questions: questions,
         createrEmail: email,
         passingGrade: passingGrade,
         answerReview: false,
-        testUrl: `http://localhost:3000/start-test?id=${id}`,
+        testUrl: `${Urls.clientUrl}/start-test?id=${id}`,
         certificateUtl: 'abc',
-        passingText: successMsg,
-        failText: failMsg
+        passingText: JSON.stringify(
+          convertToRaw(successMsg.getCurrentContent())
+        ),
+        failText: JSON.stringify(convertToRaw(failMsg.getCurrentContent()))
       };
-      updateTestService.updateTest(newTest);
-      //newTestService.addTest(newTest);
-      navigation('/tests-menu');
+
+      try {
+        updateTestService.updateTest(newTest);
+        navigation('/tests-menu');
+      } catch {
+        console.log('New test Service failed');
+      }
     }
   };
 

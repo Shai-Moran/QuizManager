@@ -1,11 +1,16 @@
 import axios from 'axios';
+import env from '../environments/environment';
 
 const getTestById = {
   async getTestById(id) {
-    const data = await axios.post('http://localhost:4000/api/tests/getById', {
-      id: id
-    });
-    return data;
+    try {
+      const data = await axios.post(`${env.serverUrl}/api/tests/getById`, {
+        id: id
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 

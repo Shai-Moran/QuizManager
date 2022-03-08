@@ -13,6 +13,7 @@ import Test from './components/Test/Test';
 import ReportsByTestsFields from './components/Reports/ReportsByTestsFields';
 import ReportsByStudents from './components/Reports/ReportsByStudents';
 import { useState } from 'react';
+import Urls from './environments/environment';
 
 function App() {
   const [activeItem, setActiveItem] = useState('');
@@ -26,7 +27,7 @@ function App() {
           name="Tests"
           active={activeItem === 'Tests'}
           onClick={() => {
-            window.location.href = 'http://localhost:3000/tests-menu';
+            window.location.href = `${Urls.clientUrl}/tests-menu`;
             setActiveItem('Tests');
           }}
         />
@@ -34,7 +35,7 @@ function App() {
           name="Questions"
           active={activeItem === 'Questions'}
           onClick={() => {
-            window.location.href = 'http://localhost:3000/questions';
+            window.location.href = `${Urls.clientUrl}/questions`;
             setActiveItem('Questions');
           }}
         />
@@ -63,8 +64,8 @@ function App() {
           <Route path="questions" element={<QuestionManager />} />
           <Route path="question-added" element={<h1>Question Added!</h1>} />
           <Route path="start-test" element={<Test />} />
-          <Route path="reports-by-tests" element={<ReportsByTestsFields/>}/>
-          <Route path="reports-by-students" element={<ReportsByStudents/>}/>
+          <Route path="reports-by-tests" element={<ReportsByTestsFields />} />
+          <Route path="reports-by-students" element={<ReportsByStudents />} />
         </Routes>
       </BrowserRouter>
     </div>
