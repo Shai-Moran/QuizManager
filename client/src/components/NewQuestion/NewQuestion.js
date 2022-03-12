@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import NewQuestionForm from './NewQuestionForm';
 import { useNavigate } from 'react-router-dom';
-import { Container, Button } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { v4 as uuidv4 } from 'uuid';
 import newQuestionService from '../../services/newQuestionService';
+import './NewQuestion.css'
 
 const NewQuestion = () => {
   const navigation = useNavigate();
@@ -63,7 +64,7 @@ const NewQuestion = () => {
         tags: myTags,
         points: points,
         lastUpdated: `${date.getDate()}/${
-          date.getMonth()
+          date.getMonth() + 1
         }/${date.getFullYear()}`,
       };
       try{
@@ -109,9 +110,9 @@ const NewQuestion = () => {
         viewAnswersError={viewAnswersError}
       />
       <Container textAlign="right">
-        <Button className="ui green button" onClick={newQuestionHandler}>
+        <button onClick={newQuestionHandler}>
           Add New Question
-        </Button>
+        </button>
       </Container>
     </Container>
   );
