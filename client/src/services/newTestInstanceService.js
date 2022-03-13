@@ -3,8 +3,11 @@ import env from '../environments/environment';
 
 class NewTestInstanceService {
   addTestInstance(testInstance) {
-    console.log(testInstance);
-    axios.post(`${env.serverUrl}/api/tests/addTestInstance`, testInstance);
+    try {
+      axios.post(`${env.serverUrl}/api/tests/addTestInstance`, testInstance);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
